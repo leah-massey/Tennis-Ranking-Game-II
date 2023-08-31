@@ -1,5 +1,5 @@
-"use client";
+const Game = require("./Game");
 
 function setPlayerPhoto(playerPhotoLocal, numberToGuessLocal) {
-  playerPhotoLocal.src = `../../../public/images/player-${numberToGuessLocal}.png`;
+  playerPhotoLocal.src = `./playerImages/player-${numberToGuessLocal}.png`;
 }

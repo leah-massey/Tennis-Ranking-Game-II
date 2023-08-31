@@ -6,16 +6,18 @@ const Play = () => {
   const game = new Game();
   const [currentPlayer, setCurrentPlayer] = useState(game.currentPlayer);
 
-  console.log(`this is  current player: ${game.currentPlayer.firstName}`);
+  console.log(
+    `this is  current player: ${game.currentPlayer.firstName} ranking ${game.currentPlayer.ranking}`
+  );
 
-  // function handleSkipPlayer() {}
+  function handleSkipPlayer() {}
 
   return (
     <>
       <div className="items-center h-full">
         <div className="pt-40 pb-10 md:flex md:justify-center grid grid-cols-3 ">
           <div name="left column" className="bg-white mr-10 h-96 w-80 pt-10">
-            <p className="text-center">Your guess </p>
+            <p className="text-center">Your guess</p>
             <div className=" bg-purple-100 w-full h-40">
               <input
                 type="number"
@@ -34,10 +36,11 @@ const Play = () => {
             <div className="flex flex-col items-center">
               <p className="font-bold text-purple-950 pb-7">Current Player:</p>
               <div className="bg-black w-60 h-60 py-10">
-                <h1 className="py-10 text-zinc-100 text-center ">image</h1>
-                {<img src={playerPhoto} alt="" />}
+                <img
+                  src={require(`../../images/player-${currentPlayer.ranking}.png`)}
+                  alt="player"
+                />
               </div>
-
               <p className="pt-3">
                 {currentPlayer.firstName} {currentPlayer.secondName}
               </p>
@@ -48,7 +51,8 @@ const Play = () => {
             <div className="pt-10">
               <p className="flex mx-auto w-3/4">
                 You have {game.guessesLeft} attempts left to guess{" "}
-                {currentPlayer.firstName}'s ranking.
+                {currentPlayer.firstName}'s ranking. (it's
+                {game.currentPlayer.ranking})
               </p>
             </div>
             <div className=" bg-purple-100 w-full h-40">
