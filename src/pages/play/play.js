@@ -1,16 +1,40 @@
 import React from "react";
 import Game from "../../components/Game";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Play = () => {
-  const game = new Game();
-  const [currentPlayer, setCurrentPlayer] = useState(game.currentPlayer);
+  // const game = new Game();
+  const [game, setGame] = useState(new Game());
+
+  const [guess, setGuess] = useState("");
+
+  const [message, setMessage] = useState("");
+
+  const [score, setScore] = useState(10);
+
+  const inputRef = useRef();
+
+  function guessMessage(guess, numberToGuess) {
+    const playerGuess = Number(guess);
+    if (playerGuess < numberToGuess) {
+      setMessage("they're not that good!");
+    } else if (playerGuess > numberToGuess) {
+      setMessage("you underestimate them");
+    } else if (playerGuess === numberToGuess) {
+      setMessage("bang on!");
+    }
+  }
+
+  const handleCheckButtonClick = (e) => {
+    game.guess(guess);
+    guessMessage(guess, game.currentPlayer.ranking);
+    setScore(game.score);
+    console.log("YOU HAVE JUST CLICKED");
+  };
 
   console.log(
-    `this is  current player: ${game.currentPlayer.firstName} ranking ${game.currentPlayer.ranking}`
+    `this is  current player: ${game.currentPlayer.firstName}, her ranking is: ${game.currentPlayer.ranking}`
   );
-
-  function handleSkipPlayer() {}
 
   return (
     <>
@@ -20,14 +44,19 @@ const Play = () => {
             <p className="text-center">Your guess</p>
             <div className=" bg-purple-100 w-full h-40">
               <input
+                ref={inputRef}
                 type="number"
                 className="border-2 flex mt-10 mx-auto items-center h-full justify-center pt-10 rounded-lg"
-                // value={guess}
-                // onChange={(e) => setGuess(e.target.value)}
+                value={guess}
+                onChange={(e) => setGuess(e.target.value)}
               />
             </div>
+            <p>{message}</p>
             <div className="bg-sky-100 w-full mt-10">
-              <button className="border-2 flex mx-auto py-3 px-5 rounded-lg">
+              <button
+                className="border-2 flex mx-auto py-3 px-5 rounded-lg"
+                onClick={handleCheckButtonClick}
+              >
                 Check
               </button>
             </div>
@@ -35,14 +64,14 @@ const Play = () => {
           <div name="middle-column" className="bg-white mr-10 w-80 h-96 pt-10">
             <div className="flex flex-col items-center">
               <p className="font-bold text-purple-950 pb-7">Current Player:</p>
-              <div className="bg-black w-60 h-60 py-10">
+              <div className="bg-black w-60 h-60">
                 <img
-                  src={require(`../../images/player-${currentPlayer.ranking}.png`)}
+                  src={require(`../../images/player-${game.currentPlayer.ranking}.png`)}
                   alt="player"
                 />
               </div>
               <p className="pt-3">
-                {currentPlayer.firstName} {currentPlayer.secondName}
+                {game.currentPlayer.firstName} {game.currentPlayer.secondName}
               </p>
             </div>
           </div>
@@ -51,13 +80,13 @@ const Play = () => {
             <div className="pt-10">
               <p className="flex mx-auto w-3/4">
                 You have {game.guessesLeft} attempts left to guess{" "}
-                {currentPlayer.firstName}'s ranking. (it's
+                {game.currentPlayer.firstName}'s ranking. (it's
                 {game.currentPlayer.ranking})
               </p>
             </div>
             <div className=" bg-purple-100 w-full h-40">
               <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-10 ">
-                <p className="text-3xl">Score: {game.score}</p>
+                <p className="text-3xl">Score: {score}</p>
               </div>
             </div>
           </div>
@@ -73,14 +102,6 @@ const Play = () => {
       </div>
     </>
   );
-};
-
-Play.getInitialProps = async () => {
-  // Fetch the data here and return it as an object
-  const game = await new Game();
-  const currentPlayer = await game.currentPlayer;
-
-  return { game, currentPlayer };
 };
 
 export default Play;
