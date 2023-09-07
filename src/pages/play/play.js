@@ -1,6 +1,6 @@
 import React from "react";
 import Game from "../../components/Game";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const Play = () => {
   const [game, setGame] = useState(new Game());
@@ -20,7 +20,7 @@ const Play = () => {
     }
   }
 
-  const handleCheckButtonClick = (e) => {
+  const handleCheckButton = (e) => {
     const guessAsNumber = parseFloat(guess);
 
     const result = game.guess(guessAsNumber);
@@ -28,17 +28,21 @@ const Play = () => {
     if (result === "correct") {
       setScore(game.score);
       setPlayer(game.currentPlayer);
+    } else {
+      setGuess("");
     }
+
+    console.log(guessAsNumber);
   };
 
-  const handleSkipButtonClick = (e) => {
+  const handleSkipButton = (e) => {
     game.skip();
     setPlayer(game.currentPlayer);
   };
 
-  console.log(
-    `this is  current player: ${player.firstName}, her ranking is: ${player.ranking}`
-  );
+  // console.log(
+  //   `this is  current player: ${player.firstName}, her ranking is: ${player.ranking}`
+  // );
 
   return (
     <>
@@ -58,7 +62,7 @@ const Play = () => {
             <div className="bg-sky-100 w-full mt-10">
               <button
                 className="border-2 flex mx-auto py-3 px-5 rounded-lg"
-                onClick={handleCheckButtonClick}
+                onClick={handleCheckButton}
               >
                 Check
               </button>
@@ -98,7 +102,7 @@ const Play = () => {
           <button
             // onClick={handleSkipPlayer}
             className="bg-white border-2 flex mx-auto py-3 px-5 rounded-lg"
-            onClick={handleSkipButtonClick}
+            onClick={handleSkipButton}
           >
             Skip player
           </button>
