@@ -31,9 +31,11 @@ module.exports = class Game {
     if (number !== this.currentPlayer.ranking) {
       if (this.guessesLeft - 1 === 0) {
         this.reset();
-        return `You have made too many incorrect guesses for ${this.currentPlayer.firstName}, the game is over.`;
+        // return `You have made too many incorrect guesses for ${this.currentPlayer.firstName}, the game is over.`;
+        return "game over";
       } else {
         this.guessesLeft--;
+        return "incorrect";
       }
     } else {
       this.guessedPlayers.push(number);
@@ -41,6 +43,7 @@ module.exports = class Game {
       // this.endGame;
       this.guessesLeft = 10;
       this.currentPlayer = this.randomPlayer();
+      return "correct";
     }
   }
 

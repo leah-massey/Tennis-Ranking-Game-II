@@ -5,14 +5,9 @@ import { useState, useRef } from "react";
 const Play = () => {
   // const game = new Game();
   const [game, setGame] = useState(new Game());
-
   const [guess, setGuess] = useState("");
-
   const [message, setMessage] = useState("");
-
-  const [score, setScore] = useState(10);
-
-  const inputRef = useRef();
+  const [score, setScore] = useState(0);
 
   function guessMessage(guess, numberToGuess) {
     const playerGuess = Number(guess);
@@ -26,10 +21,13 @@ const Play = () => {
   }
 
   const handleCheckButtonClick = (e) => {
-    game.guess(guess);
-    guessMessage(guess, game.currentPlayer.ranking);
-    setScore(game.score);
-    console.log("YOU HAVE JUST CLICKED");
+    const guessAsNumber = parseFloat(guess);
+
+    const result = game.guess(guessAsNumber);
+    guessMessage(guessAsNumber, game.currentPlayer.ranking);
+    if (result === "correct") {
+      setScore(game.score);
+    }
   };
 
   console.log(
@@ -44,7 +42,6 @@ const Play = () => {
             <p className="text-center">Your guess</p>
             <div className=" bg-purple-100 w-full h-40">
               <input
-                ref={inputRef}
                 type="number"
                 className="border-2 flex mt-10 mx-auto items-center h-full justify-center pt-10 rounded-lg"
                 value={guess}
