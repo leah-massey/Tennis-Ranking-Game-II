@@ -3,8 +3,8 @@ import Game from "../../components/Game";
 import { useState, useRef } from "react";
 
 const Play = () => {
-  // const game = new Game();
   const [game, setGame] = useState(new Game());
+  const [player, setPlayer] = useState(game.currentPlayer);
   const [guess, setGuess] = useState("");
   const [message, setMessage] = useState("");
   const [score, setScore] = useState(0);
@@ -24,14 +24,20 @@ const Play = () => {
     const guessAsNumber = parseFloat(guess);
 
     const result = game.guess(guessAsNumber);
-    guessMessage(guessAsNumber, game.currentPlayer.ranking);
+    guessMessage(guessAsNumber, player.ranking);
     if (result === "correct") {
       setScore(game.score);
+      setPlayer(game.currentPlayer);
     }
   };
 
+  const handleSkipButtonClick = (e) => {
+    game.skip();
+    setPlayer(game.currentPlayer);
+  };
+
   console.log(
-    `this is  current player: ${game.currentPlayer.firstName}, her ranking is: ${game.currentPlayer.ranking}`
+    `this is  current player: ${player.firstName}, her ranking is: ${player.ranking}`
   );
 
   return (
@@ -63,12 +69,12 @@ const Play = () => {
               <p className="font-bold text-purple-950 pb-7">Current Player:</p>
               <div className="bg-black w-60 h-60">
                 <img
-                  src={require(`../../images/player-${game.currentPlayer.ranking}.png`)}
+                  src={require(`../../images/player-${player.ranking}.png`)}
                   alt="player"
                 />
               </div>
               <p className="pt-3">
-                {game.currentPlayer.firstName} {game.currentPlayer.secondName}
+                {player.firstName} {player.secondName}
               </p>
             </div>
           </div>
@@ -77,8 +83,8 @@ const Play = () => {
             <div className="pt-10">
               <p className="flex mx-auto w-3/4">
                 You have {game.guessesLeft} attempts left to guess{" "}
-                {game.currentPlayer.firstName}'s ranking. (it's
-                {game.currentPlayer.ranking})
+                {player.firstName}'s ranking. (it's
+                {player.ranking})
               </p>
             </div>
             <div className=" bg-purple-100 w-full h-40">
@@ -92,6 +98,7 @@ const Play = () => {
           <button
             // onClick={handleSkipPlayer}
             className="bg-white border-2 flex mx-auto py-3 px-5 rounded-lg"
+            onClick={handleSkipButtonClick}
           >
             Skip player
           </button>
