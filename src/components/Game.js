@@ -30,7 +30,6 @@ module.exports = class Game {
     if (number !== this.currentPlayer.ranking) {
       if (this.guessesLeft - 1 === 0) {
         this.reset();
-        // return `You have made too many incorrect guesses for ${this.currentPlayer.firstName}, the game is over.`;
         return "game over";
       } else {
         this.guessesLeft--;
@@ -39,7 +38,6 @@ module.exports = class Game {
     } else {
       this.guessedPlayers.push(number);
       this.score += this.guessesLeft;
-      // this.endGame;
       this.guessesLeft = 10;
       this.currentPlayer = this.randomPlayer();
       return "correct";
@@ -48,7 +46,7 @@ module.exports = class Game {
 
   endGame() {
     if (this.guessedPlayers.length === 20) {
-      return `game over! Your final score is ${this.score}`;
+      return true;
     }
   }
 

@@ -15,6 +15,8 @@ const Play = () => {
       setMessage("they're not that good!");
     } else if (playerGuess > numberToGuess) {
       setMessage("you underestimate them");
+    } else if (game.endGame() === true) {
+      setMessage("bang on! Congrats, you've finished the game!");
     } else if (playerGuess === numberToGuess) {
       setMessage("bang on!");
     }
