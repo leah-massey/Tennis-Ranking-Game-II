@@ -32,6 +32,12 @@ const Play = () => {
       setGuess("");
     }
 
+    if (result === "game over") {
+      setGame(new Game());
+      console.log("new game started");
+      setPlayer(game.currentPlayer);
+    }
+
     console.log(guessAsNumber);
   };
 
