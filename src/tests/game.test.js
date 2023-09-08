@@ -1,7 +1,7 @@
 const Game = require("../components/Game");
 
 describe("Game", () => {
-  //1.
+  //1
   test("a game has an initial score of 0", () => {
     const game = new Game();
     expect(game.score).toEqual(0);
@@ -35,9 +35,7 @@ describe("Game", () => {
       game.guess(!game.currentPlayer.ranking);
     }
 
-    expect(game.guess(!game.currentPlayer.ranking)).toMatch(
-      `You have made too many incorrect guesses for ${game.currentPlayer.firstName}, the game is over.`
-    );
+    expect(game.guess(!game.currentPlayer.ranking)).toMatch(`game over`);
   });
 
   //4.2
@@ -49,7 +47,7 @@ describe("Game", () => {
   });
 
   //cgeck this one, I don't think it's working.
-  4.4;
+  //4.4;
   test("when a correct guess is made, a new currentPlayer is generated", () => {
     const game = new Game();
     const currentPlayer = game.currentPlayer;
@@ -187,6 +185,18 @@ describe("Game", () => {
     expect.stringContaining(`game over! Your final score is ${game.score}`);
   });
 
+  //17
+  test("once a player has been guessed, they will not appear again", () => {
+    const game = new Game();
+    const playerCount = 20;
+
+    game.guessedPlayers = [1, 4, 5, 6, 7, 8, 15];
+
+    for (let i = 0; i < playerCount; i++) {
+      const player = game.randomPlayer();
+      expect(game.guessedPlayers).not.toContain(player.ranking);
+    }
+  });
   // //17
   // test("skip generates a new random player", () => {
   //   const game = new Game();

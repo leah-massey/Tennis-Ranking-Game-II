@@ -24,10 +24,13 @@ const Play = () => {
     const guessAsNumber = parseFloat(guess);
 
     const result = game.guess(guessAsNumber);
+
     guessMessage(guessAsNumber, player.ranking);
+
     if (result === "correct") {
       setScore(game.score);
       setPlayer(game.currentPlayer);
+      console.log(game.guessedPlayers);
     } else {
       setGuess("");
     }

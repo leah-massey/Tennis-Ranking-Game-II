@@ -19,11 +19,10 @@ module.exports = class Game {
 
     let randomNumber = generateRandomNumber();
 
-    while (this.guessedPlayers.includes(randomNumber)) {
+    while (this.guessedPlayers.includes(randomNumber + 1)) {
       randomNumber = generateRandomNumber();
     }
 
-    // setPlayerPhoto(playerPhoto, randomNumber);
     return femalePlayerList[randomNumber];
   }
 
