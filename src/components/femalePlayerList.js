@@ -118,7 +118,7 @@ const femalePlayerList = [
   {
     firstName: "Jelena",
     secondName: "Ostapenko",
-    ranking: 18,
+    ranking: 20,
   },
 ];
 

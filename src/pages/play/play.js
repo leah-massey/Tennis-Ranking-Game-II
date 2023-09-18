@@ -5,35 +5,50 @@ import { useState } from "react";
 const Play = () => {
   const [game, setGame] = useState(new Game());
   const [player, setPlayer] = useState(game.currentPlayer);
+  const [guessedPlayers, setGuessedPlayers] = useState([]);
   const [guess, setGuess] = useState("");
   const [message, setMessage] = useState("");
   const [score, setScore] = useState(0);
 
   function guessMessage(guess, numberToGuess) {
     const playerGuess = Number(guess);
+    console.log(numberToGuess);
+
+    console.log(`this is guessedPlayers.length: ${guessedPlayers.length}`);
     if (playerGuess < numberToGuess) {
       setMessage("they're not that good!");
     } else if (playerGuess > numberToGuess) {
       setMessage("you underestimate them");
-    } else if (game.endGame() === true) {
-      setMessage("bang on! Congrats, you've finished the game!");
+    } else if (playerGuess === numberToGuess && guessedPlayers.length === 20) {
+      setMessage("bang on! This is end of game!");
     } else if (playerGuess === numberToGuess) {
       setMessage("bang on!");
     }
   }
 
   const handleCheckButton = (e) => {
-    const guessAsNumber = parseFloat(guess);
-
+    const guessAsNumber = parseFloat(guess); // turn string number into number
     const result = game.guess(guessAsNumber);
 
     guessMessage(guessAsNumber, player.ranking);
 
-    if (result === "correct") {
+    if (result === "correct" && game.guessedPlayers === 20) {
       setScore(game.score);
-      setPlayer(game.currentPlayer);
+      setGuessedPlayers(game.guessedPlayers);
+      console.log("you have finished the game");
       console.log(game.guessedPlayers);
-    } else {
+    } else if (result === "correct") {
+      setScore(game.score);
+      setGuessedPlayers(game.guessedPlayers);
+      setPlayer(game.currentPlayer);
+      console.log(
+        `this is how many guessed Players ${game.guessedPlayers.length}`
+      );
+      console.log(guessedPlayers);
+
+      setGuess("");
+      console.log(`end of game? ${game.endGame()}`);
+    } else if (result === "incorrect") {
       setGuess("");
     }
 
