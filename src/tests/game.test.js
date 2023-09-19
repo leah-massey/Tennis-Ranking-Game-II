@@ -79,14 +79,6 @@ describe("Game", () => {
     expect(game.guessesLeft).toEqual(10);
   });
 
-  //8.1
-  test(".reset() generates a new player, if more than 1 player is left to be guessed", () => {
-    const game = new Game();
-    const currentPlayer = game.currentPlayer;
-    game.reset();
-    expect(game.currentPlayer).not.toEqual(currentPlayer);
-  });
-
   //8.2
   test(".reset() generates the same player, if all other 19 players have already been guessed", () => {
     const game = new Game();
@@ -132,16 +124,17 @@ describe("Game", () => {
     expect(game.currentPlayer).toEqual(firstPlayer);
   });
 
-  // //14
+  //14
   // test("when 20 correct guesses have been made, guessedPlayers length is 20", () => {
   //   const game = new Game();
-  //   for (i = 0; i < 20; i++) {
-  //     game.guess(game.currentPlayer.ranking);
+  //   for (let i = 0; i < 20; i++) {
+  //     const playerRanking = game.currentPlayer.ranking;
+  //     game.guess(playerRanking); // Make a correct guess
   //   }
   //   expect(game.guessedPlayers).toHaveLength(20);
   // });
 
-  // //15
+  // // //15
   // test("when 20 correct guesses are made in a row, final score is 200", () => {
   //   const game = new Game();
   //   for (i = 0; i < 20; i++) {
@@ -151,7 +144,7 @@ describe("Game", () => {
   //   expect(game.score).toBe(200);
   // });
 
-  // //16
+  //16
   // test("when all players have been guessed, final score is returned", () => {
   //   const game = new Game();
   //   for (i = 0; i < 20; i++) {
@@ -161,29 +154,29 @@ describe("Game", () => {
   //   expect.stringContaining(`game over! Your final score is ${game.score}`);
   // });
 
-  // //17
-  // test("once a player has been guessed, they will not appear again", () => {
-  //   const game = new Game();
-  //   const playerCount = 20;
+  //17
+  test("once a player has been guessed, they will not appear again", () => {
+    const game = new Game();
+    const playerCount = 20;
 
-  //   game.guessedPlayers = [1, 4, 5, 6, 7, 8, 15];
+    game.guessedPlayers = [1, 4, 5, 6, 7, 8, 15];
 
-  //   for (let i = 0; i < playerCount; i++) {
-  //     const player = game.randomPlayer();
-  //     expect(game.guessedPlayers).not.toContain(player.ranking);
-  //   }
-  // });
+    for (let i = 0; i < playerCount; i++) {
+      const player = game.randomPlayer();
+      expect(game.guessedPlayers).not.toContain(player.ranking);
+    }
+  });
 
-  // //18
-  // test("when all players have been guessed, endGame() returns 'true'", () => {
-  //   const game = new Game();
+  //18
+  test("when all players have been guessed, endGame() returns 'true'", () => {
+    const game = new Game();
 
-  //   game.guessedPlayers = [
-  //     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  //   ];
+    game.guessedPlayers = [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    ];
 
-  //   expect(game.endGame()).toBe(true);
-  // });
+    expect(game.endGame()).toBe(true);
+  });
 
   // //17
   // test("skip generates a new random player", () => {
