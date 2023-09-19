@@ -124,23 +124,13 @@ describe("Game", () => {
     expect(game.guessedPlayers).toEqual([firstPlayer, secondPlayer]);
   });
 
-  // //12
-  // test("when multiple guesses are correct currentPlayer numbers are added to this.guessedPlayers", () => {
-  //   const game = new Game();
-  //   const firstPlayer = game.currentPlayer;
-  //   game.guess(firstPlayer.ranking);
-  //   const secondPlayer = game.currentPlayer;
-  //   game.guess(secondPlayer.ranking);
-  //   expect(game.guessedPlayers).toHaveLength(2);
-  // });
-
-  // //13
-  // test("when guess is not correct, currentPlayer remains the same", () => {
-  //   const game = new Game();
-  //   const firstPlayer = game.currentPlayer;
-  //   game.guess(!firstPlayer.ranking);
-  //   expect(game.currentPlayer).toEqual(firstPlayer);
-  // });
+  //13
+  test("when guess is not correct, currentPlayer remains the same", () => {
+    const game = new Game();
+    const firstPlayer = game.currentPlayer;
+    game.guess(!firstPlayer.ranking);
+    expect(game.currentPlayer).toEqual(firstPlayer);
+  });
 
   // //14
   // test("when 20 correct guesses have been made, guessedPlayers length is 20", () => {
