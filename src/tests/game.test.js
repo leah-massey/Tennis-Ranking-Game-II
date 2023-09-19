@@ -80,13 +80,38 @@ describe("Game", () => {
   });
 
   //8.1
-  test(".reset() returns guessesLeft to 10", () => {
+  test(".reset() generates a new player, if more than 1 player is left to be guessed", () => {
     const game = new Game();
-    game.guess(!game.currentPlayer.ranking);
-    game.guess(!game.currentPlayer.ranking);
+    const currentPlayer = game.currentPlayer;
     game.reset();
+    expect(game.currentPlayer).not.toEqual(currentPlayer);
+  });
 
-    expect(game.guessesLeft).toEqual(10);
+  //8.2
+  test(".reset() generates the same player, if all other 19 players have already been guessed", () => {
+    const game = new Game();
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    game.guess(game.currentPlayer.ranking);
+    const currentPlayer = game.currentPlayer;
+    game.reset();
+    expect(game.currentPlayer).toEqual(currentPlayer);
   });
 
   // //9
