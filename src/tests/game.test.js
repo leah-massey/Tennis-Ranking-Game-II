@@ -98,13 +98,13 @@ describe("Game", () => {
     expect(game.currentPlayer).toEqual(currentPlayer);
   });
 
-  // //9
-  // test("this.currentPlayer is a valid player", () => {
-  //   const game = new Game();
-  //   expect(game.currentPlayer.firstname).not.toEqual(null);
-  //   expect(game.currentPlayer.secondName).not.toEqual(null);
-  //   expect(game.currentPlayer.ranking).not.toEqual(null);
-  // });
+  //9
+  test("this.currentPlayer is a valid player", () => {
+    const game = new Game();
+    expect(game.currentPlayer.firstname).not.toEqual(null);
+    expect(game.currentPlayer.secondName).not.toEqual(null);
+    expect(game.currentPlayer.ranking).not.toEqual(null);
+  });
 
   // //10 // return to this one as it's not bullet proof
   // test("when guess is correct, a new currentPlayer is generated", () => {
