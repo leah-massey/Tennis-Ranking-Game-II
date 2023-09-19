@@ -34,6 +34,14 @@ module.exports = class Game {
   }
 
   guess(number) {
+    if (
+      number === this.currentPlayer.ranking &&
+      this.guessedPlayers.length === 19
+    ) {
+      this.guessedPlayers.push(number);
+      this.score += this.guessesLeft;
+      return "you have finished the game!";
+    }
     if (number === this.currentPlayer.ranking) {
       this.guessedPlayers.push(number);
       this.score += this.guessesLeft;

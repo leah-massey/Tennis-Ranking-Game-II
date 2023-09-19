@@ -124,7 +124,7 @@ describe("Game", () => {
     expect(game.currentPlayer).toEqual(firstPlayer);
   });
 
-  14;
+  //14;
   test("when 20 correct guesses have been made, guessedPlayers length is 20", () => {
     const game = new Game();
     for (let i = 0; i < 20; i++) {
@@ -132,6 +132,27 @@ describe("Game", () => {
       game.guess(playerRanking); // Make a correct guess
     }
     expect(game.guessedPlayers).toHaveLength(20);
+  });
+
+  // //14.1;
+  // test("when 20 correct guesses have been made, 'game completer' is returned", () => {
+  //   const game = new Game();
+  //   for (let i = 0; i < 20; i++) {
+  //     const playerRanking = game.currentPlayer.ranking;
+  //     game.guess(playerRanking); // Make a correct guess
+  //   }
+  //   expect(game.currentPlayer).toBe("game complete!");
+  // });
+
+  //14.1;
+  test("when 20 correct guesses have been made, 'you have finished the game!' is returned", () => {
+    const game = new Game();
+    for (let i = 0; i < 19; i++) {
+      const playerRanking = game.currentPlayer.ranking;
+      game.guess(playerRanking); // Make a correct guess
+    }
+    const finalPlayerRanking = game.currentPlayer.ranking;
+    expect(game.guess(finalPlayerRanking)).toBe("you have finished the game!");
   });
 
   // // //15
