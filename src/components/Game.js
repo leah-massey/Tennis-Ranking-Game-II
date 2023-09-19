@@ -13,17 +13,20 @@ module.exports = class Game {
   }
 
   randomPlayer() {
-    //. generate random number
-
+    //. generate random number between 0 and 19
     function generateRandomNumber() {
       return Math.trunc(Math.random() * 20);
     }
 
     let randomNumber = generateRandomNumber();
 
-    // while loop which means a player won't be repeated
-    while (this.guessedPlayers.includes(randomNumber + 1)) {
-      randomNumber = generateRandomNumber();
+    if (this.guessedPlayers.length < 20) {
+      // while loop which means a player won't be repeated
+      while (this.guessedPlayers.includes(randomNumber + 1)) {
+        randomNumber = generateRandomNumber();
+      }
+    } else {
+      return "game complete!";
     }
 
     // return the profile of the player with index of random number.
@@ -44,22 +47,6 @@ module.exports = class Game {
         return "incorrect";
       }
     }
-
-    // if (number !== this.currentPlayer.ranking) {
-    //   if (this.guessesLeft - 1 === 0) {
-    //     this.reset();
-    //     return "game over";
-    //   } else {
-    //     this.guessesLeft--;
-    //     return "incorrect";
-    //   }
-    // } else {
-    //   this.guessedPlayers.push(number);
-    //   this.score += this.guessesLeft;
-    //   this.guessesLeft = 10;
-    //   this.currentPlayer = this.randomPlayer();
-    //   return "correct";
-    // }
   }
 
   endGame() {

@@ -31,7 +31,7 @@ describe("Game", () => {
   //4.1
   test("after ten incorrect guesses for the currentPlayer, game ends.", () => {
     const game = new Game();
-    for (i = 0; i < 9; i++) {
+    for (let i = 0; i < 9; i++) {
       game.guess(!game.currentPlayer.ranking);
     }
     expect(game.guess(!game.currentPlayer.ranking)).toMatch(`game over`);
@@ -124,15 +124,15 @@ describe("Game", () => {
     expect(game.currentPlayer).toEqual(firstPlayer);
   });
 
-  //14
-  // test("when 20 correct guesses have been made, guessedPlayers length is 20", () => {
-  //   const game = new Game();
-  //   for (let i = 0; i < 20; i++) {
-  //     const playerRanking = game.currentPlayer.ranking;
-  //     game.guess(playerRanking); // Make a correct guess
-  //   }
-  //   expect(game.guessedPlayers).toHaveLength(20);
-  // });
+  14;
+  test("when 20 correct guesses have been made, guessedPlayers length is 20", () => {
+    const game = new Game();
+    for (let i = 0; i < 20; i++) {
+      const playerRanking = game.currentPlayer.ranking;
+      game.guess(playerRanking); // Make a correct guess
+    }
+    expect(game.guessedPlayers).toHaveLength(20);
+  });
 
   // // //15
   // test("when 20 correct guesses are made in a row, final score is 200", () => {
