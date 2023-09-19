@@ -106,7 +106,11 @@ const Play = () => {
             </div>
             <div className=" bg-purple-100 w-full h-40">
               <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-10 ">
-                <p className="text-3xl">Score: {score}</p>
+                {guessedPlayers.length < 20 ? (
+                  <p className="text-3xl">Score: {score}</p>
+                ) : (
+                  <p className="text-3xl">Final Score: {score}</p>
+                )}
               </div>
             </div>
           </div>
