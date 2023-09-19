@@ -44,18 +44,22 @@ module.exports = class Game {
     ) {
       this.guessedPlayers.push(number);
       this.score += this.guessesLeft;
+      console.log("you have finished the game!");
       return "you have finished the game!";
     }
     if (number === this.currentPlayer.ranking) {
       this.guessedPlayers.push(number);
       this.score += this.guessesLeft;
       this.reset();
+      console.log("correct");
       return "correct";
     } else {
       if (this.guessesLeft - 1 === 0) {
+        console.log("game over");
         return "game over";
       } else {
         this.guessesLeft--;
+        console.log("incorrect");
         return "incorrect";
       }
     }

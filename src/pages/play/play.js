@@ -12,9 +12,7 @@ const Play = () => {
 
   function guessMessage(guess, numberToGuess) {
     const playerGuess = Number(guess);
-    console.log(numberToGuess);
 
-    console.log(`this is guessedPlayers.length: ${guessedPlayers.length}`);
     if (playerGuess < numberToGuess) {
       setMessage("they're not that good!");
     } else if (playerGuess > numberToGuess) {
@@ -25,50 +23,38 @@ const Play = () => {
       setMessage("bang on!");
     }
   }
-
+  // this button is bugging up when the game is finished ... maybe creating an infinite loop? I want the functionality of this nbutton to stop when the game is over.
   const handleCheckButton = (e) => {
     const guessAsNumber = parseFloat(guess); // turn string number into number
     const result = game.guess(guessAsNumber);
 
     guessMessage(guessAsNumber, player.ranking);
 
-    if (result === "correct" && game.guessedPlayers === 20) {
+    if (result === "you have finished the game!") {
       setScore(game.score);
       setGuessedPlayers(game.guessedPlayers);
-      console.log("you have finished the game");
-      console.log(game.guessedPlayers);
+      console.log(`end of game? ${game.endGame()}`);
     } else if (result === "correct") {
       setScore(game.score);
       setGuessedPlayers(game.guessedPlayers);
       setPlayer(game.currentPlayer);
-      console.log(
-        `this is how many guessed Players ${game.guessedPlayers.length}`
-      );
-      console.log(guessedPlayers);
-
       setGuess("");
-      console.log(`end of game? ${game.endGame()}`);
     } else if (result === "incorrect") {
       setGuess("");
     }
 
     if (result === "game over") {
+      // probably not what I want?
       setGame(new Game());
       console.log("new game started");
       setPlayer(game.currentPlayer);
     }
-
-    console.log(guessAsNumber);
   };
 
   const handleSkipButton = (e) => {
     game.skip();
     setPlayer(game.currentPlayer);
   };
-
-  // console.log(
-  //   `this is  current player: ${player.firstName}, her ranking is: ${player.ranking}`
-  // );
 
   return (
     <>
@@ -87,6 +73,7 @@ const Play = () => {
             <p>{message}</p>
             <div className="bg-sky-100 w-full mt-10">
               <button
+                disabled={game.endGame() === true}
                 className="border-2 flex mx-auto py-3 px-5 rounded-lg"
                 onClick={handleCheckButton}
               >
