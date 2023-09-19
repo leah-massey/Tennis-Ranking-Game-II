@@ -90,25 +90,9 @@ describe("Game", () => {
   //8.2
   test(".reset() generates the same player, if all other 19 players have already been guessed", () => {
     const game = new Game();
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
-    game.guess(game.currentPlayer.ranking);
+    for (let i = 0; i < 19; i++) {
+      game.guess(game.currentPlayer.ranking);
+    }
     const currentPlayer = game.currentPlayer;
     game.reset();
     expect(game.currentPlayer).toEqual(currentPlayer);
