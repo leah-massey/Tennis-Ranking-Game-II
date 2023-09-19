@@ -188,6 +188,15 @@ describe("Game", () => {
     expect(game.endGame()).toBe(true);
   });
 
+  //18.1
+  test("when 20 correct guesses have been made, endGame() returns true", () => {
+    const game = new Game();
+    for (let i = 0; i < 20; i++) {
+      game.guess(game.currentPlayer.ranking);
+    }
+    expect(game.endGame()).toBe(true);
+  });
+
   //17
   test("skip generates a new random player", () => {
     const game = new Game();
@@ -208,5 +217,4 @@ describe("Game", () => {
 
   // .guesses left if player has been skipped
   // can you skip if you've staretd guessingh?
-  // are guesses refreshed is skip function is used?
 });
