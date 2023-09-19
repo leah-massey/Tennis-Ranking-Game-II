@@ -164,16 +164,6 @@ describe("Game", () => {
     expect(game.score).toBe(200);
   });
 
-  //16
-  // test("when all players have been guessed, final score is returned", () => {
-  //   const game = new Game();
-  //   for (i = 0; i < 20; i++) {
-  //     game.guess(game.currentPlayer.ranking);
-  //   }
-
-  //   expect.stringContaining(`game over! Your final score is ${game.score}`);
-  // });
-
   //17
   test("once a player has been guessed, they will not appear again", () => {
     const game = new Game();

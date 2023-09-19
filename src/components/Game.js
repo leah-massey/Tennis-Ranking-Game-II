@@ -20,14 +20,18 @@ module.exports = class Game {
 
     let randomNumber = generateRandomNumber();
 
-    if (this.guessedPlayers.length < 20) {
-      // while loop which means a player won't be repeated
-      while (this.guessedPlayers.includes(randomNumber + 1)) {
-        randomNumber = generateRandomNumber();
-      }
-    } else {
-      return "game complete!";
+    while (this.guessedPlayers.includes(randomNumber + 1)) {
+      randomNumber = generateRandomNumber();
     }
+
+    // if (this.guessedPlayers.length < 20) {
+    //   // while loop which means a player won't be repeated
+    //   while (this.guessedPlayers.includes(randomNumber + 1)) {
+    //     randomNumber = generateRandomNumber();
+    //   }
+    // } else {
+    //   return "game complete!";
+    // }
 
     // return the profile of the player with index of random number.
     return femalePlayerList[randomNumber];
@@ -65,15 +69,15 @@ module.exports = class Game {
 
   skip() {
     const player = this.currentPlayer;
-
-    this.currentPlayer = this.randomPlayer();
-    let newPlayer = this.currentPlayer;
+    let newPlayer;
 
     // I only want skip loop to work if there is more than one player left to guess
     if (this.guessedPlayers.length < 19) {
-      while (newPlayer === player) {
+      do {
         newPlayer = this.randomPlayer();
-      }
+      } while (newPlayer === player);
+
+      this.currentPlayer = newPlayer;
     }
   }
 };
