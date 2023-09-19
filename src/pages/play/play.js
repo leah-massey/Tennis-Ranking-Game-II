@@ -23,7 +23,7 @@ const Play = () => {
       setMessage("bang on!");
     }
   }
-  // this button is bugging up when the game is finished ... maybe creating an infinite loop? I want the functionality of this nbutton to stop when the game is over.
+
   const handleCheckButton = (e) => {
     const guessAsNumber = parseFloat(guess); // turn string number into number
     const result = game.guess(guessAsNumber);
@@ -113,7 +113,7 @@ const Play = () => {
         </div>
         <div>
           <button
-            // onClick={handleSkipPlayer}
+            disabled={game.endGame() === true}
             className="bg-white border-2 flex mx-auto py-3 px-5 rounded-lg"
             onClick={handleSkipButton}
           >
