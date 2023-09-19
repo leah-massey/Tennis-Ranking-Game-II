@@ -195,4 +195,18 @@ describe("Game", () => {
     game.skip();
     expect(game.currentPlayer).not.toEqual(firstPlayer);
   });
+
+  //19
+  test("when a player is skipped, the new player's guess attempts are refreshed to 10", () => {
+    const game = new Game();
+    const firstPlayer = game.currentPlayer;
+    game.guess(!firstPlayer);
+    game.guess(!firstPlayer);
+    game.skip();
+    expect(game.guessesLeft).toEqual(10);
+  });
+
+  // .guesses left if player has been skipped
+  // can you skip if you've staretd guessingh?
+  // are guesses refreshed is skip function is used?
 });

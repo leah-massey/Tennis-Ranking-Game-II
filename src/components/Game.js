@@ -78,6 +78,7 @@ module.exports = class Game {
       } while (newPlayer === player);
 
       this.currentPlayer = newPlayer;
+      this.guessesLeft = 10;
     }
   }
 };
