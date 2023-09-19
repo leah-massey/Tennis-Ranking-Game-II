@@ -96,13 +96,17 @@ const Play = () => {
             </div>
           </div>
           <div name="right-column" className="bg-white w-80 h-96 pt-10">
-            <p className="text-center">Your Score</p>
+  
             <div className="pt-10">
-              <p className="flex mx-auto w-3/4">
-                You have {game.guessesLeft} attempts left to guess{" "}
-                {player.firstName}'s ranking. (it's
-                {player.ranking})
-              </p>
+              {guessedPlayers.length < 20 ? (
+                <p className="flex mx-auto w-3/4">
+                  You have {game.guessesLeft} attempts left to guess{" "}
+                  {player.firstName}'s ranking. (it's
+                  {player.ranking})
+                </p>
+              ) : (
+                <p>Well done, you finished the game!!</p>
+              )}
             </div>
             <div className=" bg-purple-100 w-full h-40">
               <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-10 ">
