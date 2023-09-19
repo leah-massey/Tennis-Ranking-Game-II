@@ -178,11 +178,11 @@ describe("Game", () => {
     expect(game.endGame()).toBe(true);
   });
 
-  // //17
-  // test("skip generates a new random player", () => {
-  //   const game = new Game();
-  //   const firstPlayer = game.currentPlayer;
-  //   game.skip();
-  //   expect(game.currentPlayer).not.toEqual(firstPlayer);
-  // });
+  //17
+  test("skip generates a new random player", () => {
+    const game = new Game();
+    const firstPlayer = game.currentPlayer;
+    game.skip();
+    expect(game.currentPlayer).not.toEqual(firstPlayer);
+  });
 });

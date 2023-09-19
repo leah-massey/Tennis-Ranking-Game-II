@@ -69,6 +69,16 @@ module.exports = class Game {
   }
 
   skip() {
+    const player = this.currentPlayer;
+
     this.currentPlayer = this.randomPlayer();
+    let newPlayer = this.currentPlayer;
+
+    // I only want skip loop to work if there is more than one player left to guess
+    if (this.guessedPlayers.length < 19) {
+      while (newPlayer === player) {
+        newPlayer = this.randomPlayer();
+      }
+    }
   }
 };
