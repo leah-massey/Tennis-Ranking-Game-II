@@ -106,15 +106,13 @@ describe("Game", () => {
     expect(game.currentPlayer.ranking).not.toEqual(null);
   });
 
-  // //10 // return to this one as it's not bullet proof
-  // test("when guess is correct, a new currentPlayer is generated", () => {
-  //   const game = new Game();
-  //   const firstPlayer = game.currentPlayer;
-  //   game.guess(firstPlayer.ranking);
-  //   expect(game.currentPlayer).toHaveProperty("firstName");
-  //   expect(game.guessedPlayers).toEqual([firstPlayer.ranking]);
-  //   expect(game.currentPlayer).not.toEqual(firstPlayer);
-  // });
+  //10
+  test("when guess is correct, a new currentPlayer is generated", () => {
+    const game = new Game();
+    const firstPlayer = game.currentPlayer.ranking;
+    game.guess(firstPlayer);
+    expect(game.currentPlayer).not.toEqual(firstPlayer);
+  });
 
   // //11
   // test("when a guess is correct currentPlayer ranking gets added to this.guessedPlayers", () => {
