@@ -114,13 +114,15 @@ describe("Game", () => {
     expect(game.currentPlayer).not.toEqual(firstPlayer);
   });
 
-  // //11
-  // test("when a guess is correct currentPlayer ranking gets added to this.guessedPlayers", () => {
-  //   const game = new Game();
-  //   const firstPlayer = game.currentPlayer;
-  //   game.guess(firstPlayer.ranking);
-  //   expect(game.guessedPlayers).toEqual([firstPlayer.ranking]);
-  // });
+  //11
+  test("when a guess is correct currentPlayer ranking gets added to this.guessedPlayers", () => {
+    const game = new Game();
+    const firstPlayer = game.currentPlayer.ranking;
+    game.guess(firstPlayer);
+    const secondPlayer = game.currentPlayer.ranking;
+    game.guess(secondPlayer);
+    expect(game.guessedPlayers).toEqual([firstPlayer, secondPlayer]);
+  });
 
   // //12
   // test("when multiple guesses are correct currentPlayer numbers are added to this.guessedPlayers", () => {
