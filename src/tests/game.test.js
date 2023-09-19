@@ -155,15 +155,14 @@ describe("Game", () => {
     expect(game.guess(finalPlayerRanking)).toBe("you have finished the game!");
   });
 
-  // // //15
-  // test("when 20 correct guesses are made in a row, final score is 200", () => {
-  //   const game = new Game();
-  //   for (i = 0; i < 20; i++) {
-  //     game.guess(game.currentPlayer.ranking);
-  //   }
-
-  //   expect(game.score).toBe(200);
-  // });
+  //15
+  test("when 20 correct guesses are made in a row, final score is 200", () => {
+    const game = new Game();
+    for (let i = 0; i < 20; i++) {
+      game.guess(game.currentPlayer.ranking);
+    }
+    expect(game.score).toBe(200);
+  });
 
   //16
   // test("when all players have been guessed, final score is returned", () => {
