@@ -59,10 +59,10 @@ const Play = () => {
   return (
     <>
       <div className="items-center h-full">
-        <div className="pt-40 pb-10 md:flex md:justify-center grid grid-cols-3 ">
+        <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 ">
           <div name="left column" className="bg-white mr-10 h-96 w-80 pt-10">
             <p className="text-center">Your guess</p>
-            <div className=" bg-purple-100 w-full h-40">
+            <div className=" w-full h-40">
               <input
                 type="number"
                 className="border-2 flex mt-10 mx-auto items-center h-full justify-center pt-10 rounded-lg"
@@ -96,7 +96,6 @@ const Play = () => {
             </div>
           </div>
           <div name="right-column" className="bg-white w-80 h-96 pt-10">
-  
             <div className="pt-10">
               {guessedPlayers.length < 20 ? (
                 <p className="flex mx-auto w-3/4">

@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontfamily: {
+        faster: ["`Faster One`", "cursive"],
+      },
+    },
   },
   plugins: [],
 };
