@@ -14,6 +14,7 @@ module.exports = {
       cream: "#f2f2e9",
       lemon: "#f2edaa",
       blue: "#62859c",
+      coral: "#de643c",
     },
   },
   plugins: [],

@@ -1,6 +1,6 @@
 import React from "react";
 import Game from "../../components/Game";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Play = () => {
   const [game, setGame] = useState(new Game());
@@ -56,77 +56,107 @@ const Play = () => {
     setPlayer(game.currentPlayer);
   };
 
+  const handleRestartButton = async (e) => {
+    setGame(new Game());
+    setMessage("");
+    setScore(0);
+    setGuessedPlayers([]);
+  };
+
+  useEffect(() => {
+    setPlayer(game.currentPlayer);
+  }, [game.currentPlayer]);
+
   return (
     <>
       <div className="items-center h-full">
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 ">
-          <div name="left column" className="bg-cream mr-10 h-96 w-80 pt-10">
-            <p className="text-center">Your guess</p>
-            <div className=" w-full h-40">
-              <input
-                type="number"
-                className="border-2 flex mt-10 mx-auto items-center h-full justify-center pt-10 rounded-lg"
-                value={guess}
-                onChange={(e) => setGuess(e.target.value)}
-              />
+          <div name="left column">
+            <div className="bg-cream mr-5 h-96 w-80 pt-10">
+              <p className="text-center">Your guess</p>
+              <div className=" w-full h-40">
+                <input
+                  type="number"
+                  className="border-2 flex mt-10 mx-auto items-center h-full justify-center pt-10 rounded-lg"
+                  value={guess}
+                  onChange={(e) => setGuess(e.target.value)}
+                />
+              </div>
+              <p className="text-center pt-5">{message}</p>
             </div>
-            <p>{message}</p>
-            <div className="w-full mt-10">
+            <div className="w-full pt-3">
               <button
                 disabled={game.endGame() === true}
-                className="border-2 flex mx-auto py-3 px-5 rounded-lg  bg-green-800 text-white"
+                className="border-2 flex mx-auto py-3 px-5 rounded-lg  bg-cream"
                 onClick={handleCheckButton}
               >
                 Check
               </button>
             </div>
           </div>
-          <div name="middle-column" className="bg-cream mr-10 w-80 h-96 pt-10">
-            <div className="flex flex-col items-center">
-              <p className="font-bold text-purple-950 pb-7">Current Player:</p>
-              <div className="bg-black w-60 h-60">
-                <img
-                  src={require(`../../images/player-${player.ranking}.png`)}
-                  alt="player"
-                />
+          <div name="middle-column">
+            <div className="bg-cream ml-5 mr-5 w-80 h-96 pt-10">
+              <div className="flex flex-col items-center">
+                <p className="font-bold text-purple-950 pb-7">
+                  Current Player:
+                </p>
+                <div className="bg-black w-60 h-60">
+                  <img
+                    src={require(`../../images/player-${player.ranking}.png`)}
+                    alt="player"
+                  />
+                </div>
+                <p className="pt-3">
+                  {player.firstName} {player.secondName}
+                </p>
               </div>
-              <p className="pt-3">
-                {player.firstName} {player.secondName}
-              </p>
+            </div>
+            <div className="pt-3">
+              <button
+                disabled={game.endGame() === true}
+                className="border-2 flex mx-auto py-3 px-5 rounded-lg bg-cream"
+                onClick={handleSkipButton}
+              >
+                Skip player
+              </button>
             </div>
           </div>
-          <div name="right-column" className="bg-cream w-80 h-96 pt-10">
-            <div className="pt-10">
-              {guessedPlayers.length < 20 ? (
-                <p className="flex mx-auto w-3/4">
-                  You have {game.guessesLeft} attempts left to guess{" "}
-                  {player.firstName}'s ranking. (it's
-                  {player.ranking})
-                </p>
-              ) : (
-                <p>Well done, you finished the game!!</p>
-              )}
-            </div>
-            <div className=" bg-purple-100 w-full h-40">
-              <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-10 ">
+          <div name="right-column ">
+            <div className="bg-cream ml-5 w-80 h-96 pt-10">
+              <div className="pt-10">
                 {guessedPlayers.length < 20 ? (
-                  <p className="text-3xl">Score: {score}</p>
+                  <p className="text-center flex mx-auto w-3/4">
+                    You have {game.guessesLeft} attempts left to guess{" "}
+                    {player.firstName}'s ranking. (it's
+                    {player.ranking})
+                  </p>
                 ) : (
-                  <p className="text-3xl">Final Score: {score}</p>
+                  <p className="text-center">
+                    Well done, you finished the game!!
+                  </p>
                 )}
               </div>
+              <div className=" bg-purple-100 w-full h-40">
+                <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-10 ">
+                  {guessedPlayers.length < 20 ? (
+                    <p className="text-3xl">Score: {score}</p>
+                  ) : (
+                    <p className="text-3xl">Final Score: {score}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="pt-3">
+              <button
+                className=" border-2 flex mx-auto py-3 px-5 rounded-lg  bg-coral"
+                onClick={handleRestartButton}
+              >
+                Start Again
+              </button>
             </div>
           </div>
         </div>
-        <div>
-          <button
-            disabled={game.endGame() === true}
-            className=" bg-cream border-2 flex mx-auto py-3 px-5 rounded-lg"
-            onClick={handleSkipButton}
-          >
-            Skip player
-          </button>
-        </div>
+        <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 "></div>
       </div>
     </>
   );
