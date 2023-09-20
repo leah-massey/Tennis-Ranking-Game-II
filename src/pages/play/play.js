@@ -60,7 +60,7 @@ const Play = () => {
     <>
       <div className="items-center h-full">
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 ">
-          <div name="left column" className="bg-white mr-10 h-96 w-80 pt-10">
+          <div name="left column" className="bg-cream mr-10 h-96 w-80 pt-10">
             <p className="text-center">Your guess</p>
             <div className=" w-full h-40">
               <input
@@ -71,17 +71,17 @@ const Play = () => {
               />
             </div>
             <p>{message}</p>
-            <div className="bg-sky-100 w-full mt-10">
+            <div className="w-full mt-10">
               <button
                 disabled={game.endGame() === true}
-                className="border-2 flex mx-auto py-3 px-5 rounded-lg"
+                className="border-2 flex mx-auto py-3 px-5 rounded-lg  bg-green-800 text-white"
                 onClick={handleCheckButton}
               >
                 Check
               </button>
             </div>
           </div>
-          <div name="middle-column" className="bg-white mr-10 w-80 h-96 pt-10">
+          <div name="middle-column" className="bg-cream mr-10 w-80 h-96 pt-10">
             <div className="flex flex-col items-center">
               <p className="font-bold text-purple-950 pb-7">Current Player:</p>
               <div className="bg-black w-60 h-60">
@@ -95,7 +95,7 @@ const Play = () => {
               </p>
             </div>
           </div>
-          <div name="right-column" className="bg-white w-80 h-96 pt-10">
+          <div name="right-column" className="bg-cream w-80 h-96 pt-10">
             <div className="pt-10">
               {guessedPlayers.length < 20 ? (
                 <p className="flex mx-auto w-3/4">
@@ -121,7 +121,7 @@ const Play = () => {
         <div>
           <button
             disabled={game.endGame() === true}
-            className="bg-white border-2 flex mx-auto py-3 px-5 rounded-lg"
+            className=" bg-cream border-2 flex mx-auto py-3 px-5 rounded-lg"
             onClick={handleSkipButton}
           >
             Skip player
