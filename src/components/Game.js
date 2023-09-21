@@ -54,11 +54,10 @@ module.exports = class Game {
       console.log("correct");
       return "correct";
     } else {
-      if (this.guessesLeft - 1 === 0) {
-        this.guessesLeft--;
+      this.guessesLeft--;
+      if (this.guessesLeft === 0) {
         return "game over";
       } else {
-        this.guessesLeft--;
         console.log("incorrect");
         return "incorrect";
       }

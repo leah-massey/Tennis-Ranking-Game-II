@@ -162,7 +162,7 @@ const Play = () => {
                 className=" border-2 flex mx-auto py-3 px-5 rounded-lg  bg-coral"
                 onClick={handleRestartButton}
               >
-                Start Again
+                Start Game Again
               </button>
             </div>
           </div>
