@@ -23,17 +23,6 @@ module.exports = class Game {
     while (this.guessedPlayers.includes(randomNumber + 1)) {
       randomNumber = generateRandomNumber();
     }
-
-    // if (this.guessedPlayers.length < 20) {
-    //   // while loop which means a player won't be repeated
-    //   while (this.guessedPlayers.includes(randomNumber + 1)) {
-    //     randomNumber = generateRandomNumber();
-    //   }
-    // } else {
-    //   return "game complete!";
-    // }
-
-    // return the profile of the player with index of random number.
     return femalePlayerList[randomNumber];
   }
 
