@@ -81,8 +81,9 @@ const Play = () => {
               <p className="text-center">Your guess</p>
               <div className=" w-full h-40">
                 <input
+                  class="guess"
                   type="number"
-                  className="border-2 flex mt-10 mx-auto items-center h-full justify-center pt-10 rounded-lg"
+                  className="border-2 flex mt-10 mx-auto items-center h-full w-2/3 justify-center pt-1 rounded-lg text-5xl text-center"
                   value={guess}
                   onChange={(e) => setGuess(e.target.value)}
                 />
