@@ -55,7 +55,7 @@ module.exports = class Game {
       return "correct";
     } else {
       if (this.guessesLeft - 1 === 0) {
-        console.log("game over");
+        this.guessesLeft--;
         return "game over";
       } else {
         this.guessesLeft--;
@@ -66,7 +66,7 @@ module.exports = class Game {
   }
 
   endGame() {
-    if (this.guessedPlayers.length === 20) {
+    if (this.guessedPlayers.length === 20 || this.guessesLeft === 0) {
       return true;
     }
   }
