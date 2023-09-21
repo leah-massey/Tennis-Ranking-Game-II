@@ -60,12 +60,20 @@ const Play = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    // Key press 'enter'
+    if (e.keyCode === 13 || (e.which === 13 && game.guessesLeft > 0)) {
+      handleCheckButton();
+    }
+  };
+
   const handleSkipButton = (e) => {
     game.skip();
     setPlayer(game.currentPlayer);
   };
 
   const handleRestartButton = async (e) => {
+    setGuess("");
     setGame(new Game());
     setMessage("");
     setScore(0);
@@ -81,11 +89,12 @@ const Play = () => {
               <p className="text-center">Your guess</p>
               <div className=" w-full h-40">
                 <input
-                  class="guess"
+                  placeholder=""
                   type="number"
                   className="border-2 flex mt-10 mx-auto items-center h-full w-2/3 justify-center pt-1 rounded-lg text-5xl text-center"
                   value={guess}
                   onChange={(e) => setGuess(e.target.value)}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
               <p className="text-center pt-5">{message}</p>
