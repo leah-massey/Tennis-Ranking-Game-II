@@ -20,14 +20,14 @@ export default function Navbar() {
           <br></br>
           <p>
             This game is quite simple: You have 10 attempts to guess each
-            player's ranking. The players are all within the top 20.
+            player's ranking. Players are all within the top 20.
           </p>
           <p>
-            {" "}
             Once you have guessed a player, a new player will appear for you to
-            guess.{" "}
+            guess.
           </p>
           <p> On guessing all players, the game ends. </p>
+          <p> On running out of guesses, the game ends. </p>
         </div>
       </HowToPlayPopup>
     </div>
