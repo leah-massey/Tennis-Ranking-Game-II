@@ -1,5 +1,5 @@
 import React from "react";
-import Game from "../../components/Game";
+import Game from "../components/Game";
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -132,7 +132,7 @@ const Play = () => {
                 </p>
                 <div className="bg-black w-60 h-60">
                   <img
-                    src={require(`../../images/player-${player.ranking}.png`)}
+                    src={require(`../images/player-${player.ranking}.png`)}
                     alt="player"
                   />
                 </div>

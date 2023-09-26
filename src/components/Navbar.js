@@ -1,10 +1,21 @@
 import HowToPlayPopup from "./howToPlayPopup";
+import { Nav } from "react-bootstrap";
 
 export default function Navbar() {
   return (
     <div>
       <div className="w-full h-[40px] justify-between items-center px-10 bg-forest text-cream">
-        <HowToPlayPopup />
+        <ul>
+          <HowToPlayPopup />
+          <Nav
+            activeKey="/login"
+            onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+          >
+            <Nav.Item>
+              <Nav.Link href="/login">Login</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </ul>
       </div>
 
       {/* <HowToPlayPopup trigger={showPopup} setTrigger={setShowPopup}>
