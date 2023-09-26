@@ -6,15 +6,13 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="w-full h-[40px] flex justify-between items-center px-10 bg-forest text-cream">
+      <div className="w-full h-[40px] justify-between items-center px-10 bg-forest text-cream">
         <div className="hidden md:flex">
-          <button className="border-2" onClick={() => setShowPopup(true)}>
-            How To Play
-          </button>
+          <button onClick={() => setShowPopup(true)}>How To Play</button>
         </div>
       </div>
 
-      <HowToPlayPopup trigger={showPopup}>
+      {/* <HowToPlayPopup trigger={showPopup} setTrigger={setShowPopup}>
         <div className=" pt-1 w-2/3 items-center justify-center align-middle">
           <h3>HOW TO PLAY</h3>
           <br></br>
@@ -29,7 +27,7 @@ export default function Navbar() {
           <p> On guessing all players, the game ends. </p>
           <p> On running out of guesses, the game ends. </p>
         </div>
-      </HowToPlayPopup>
+      </HowToPlayPopup> */}
     </div>
   );
 }
