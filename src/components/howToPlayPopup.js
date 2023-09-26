@@ -24,10 +24,10 @@ function HowToPlayPopup() {
         // className=" bg-blue absolute w-2/3 top-0 h-40 mt-60"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="bg-cream">
           <Modal.Title>How to play</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bg-cream">
           <p>
             This game is quite simple: You have 10 attempts to guess each
             player's ranking. Players are all within the top 20.
@@ -40,8 +40,8 @@ function HowToPlayPopup() {
           <p> On running out of guesses, the game ends. </p>
           <p> Good Luck!! </p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+        <Modal.Footer className="bg-cream">
+          <Button variant="secondary" onClick={handleClose} className="bg-blue">
             Close
           </Button>
         </Modal.Footer>

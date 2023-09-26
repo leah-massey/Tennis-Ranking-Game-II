@@ -2,7 +2,6 @@ import "./App.css";
 import Header from "./components/header";
 import Play from "./pages/play/play";
 import Navbar from "./components/Navbar";
-import HowToPlayPopup from "./components/howToPlayPopup";
 
 function App() {
   return (
@@ -10,7 +9,6 @@ function App() {
       <header className="App-header">
         <Header />
         <Navbar />
-        {/* <HowToPlayPopup /> */}
         <Play />
       </header>
     </div>

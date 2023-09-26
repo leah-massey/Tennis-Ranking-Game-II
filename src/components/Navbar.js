@@ -1,15 +1,9 @@
 import HowToPlayPopup from "./howToPlayPopup";
-import { useState } from "react";
 
 export default function Navbar() {
-  const [showPopup, setShowPopup] = useState(false);
-
   return (
     <div>
       <div className="w-full h-[40px] justify-between items-center px-10 bg-forest text-cream">
-        {/* <div className="hidden md:flex">
-          <button onClick={() => setShowPopup(true)}>How To Play</button>
-        </div> */}
         <HowToPlayPopup />
       </div>
 

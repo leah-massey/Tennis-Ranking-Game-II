@@ -1,6 +1,9 @@
 import React from "react";
 import Game from "../../components/Game";
 import { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Play = () => {
   const [game, setGame] = useState(new Game());
@@ -10,6 +13,24 @@ const Play = () => {
   const [message, setMessage] = useState("");
   const [score, setScore] = useState(0);
   const [guessesLeft, setGuessesLeft] = useState(10);
+  const [showGameOver, setShowGameOver] = useState(false);
+
+  // const handleShowGameOver = () => {
+  //   const guessAsNumber = parseFloat(guess); // turn string number into number
+  //   const result = game.guess(guessAsNumber);
+  //   if (result === "you have finished the game!") {
+  //     setShowGameOver(true);
+  //   }
+  // };
+
+  const handleNewGame = () => {
+    setShowGameOver(false);
+    setGame(new Game());
+    setGuess("");
+    setMessage("");
+    setScore(0);
+    setGuessedPlayers([]);
+  };
 
   useEffect(() => {
     setGuessesLeft(game.guessesLeft);
@@ -43,6 +64,7 @@ const Play = () => {
     if (result === "you have finished the game!") {
       setScore(game.score);
       setGuessedPlayers(game.guessedPlayers);
+      setShowGameOver(true);
       console.log(`end of game? ${game.endGame()}`);
     } else if (result === "correct") {
       setScore(game.score);
@@ -54,6 +76,7 @@ const Play = () => {
     }
 
     if (result === "game over") {
+      setShowGameOver(true);
       setGuess("");
       setMessage("No more guesses left!");
       console.log("game over");
@@ -177,6 +200,30 @@ const Play = () => {
         </div>
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 "></div>
       </div>
+
+      <Modal
+        show={showGameOver}
+        onHide={handleNewGame}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header closeButton className="bg-cream">
+          <Modal.Title>Game Over!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="bg-cream">
+          <p>End of game! Your final score is:</p>
+        </Modal.Body>
+        <Modal.Footer className="bg-cream">
+          <Button
+            variant="secondary"
+            onClick={handleNewGame}
+            className="bg-blue"
+          >
+            Play Again
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
