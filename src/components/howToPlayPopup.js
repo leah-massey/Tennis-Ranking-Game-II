@@ -12,9 +12,9 @@ function HowToPlayPopup() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        How to Play
-      </Button>
+      <button onClick={handleShow} className="pt-2">
+        How To Play
+      </button>
 
       <Modal
         show={show}
