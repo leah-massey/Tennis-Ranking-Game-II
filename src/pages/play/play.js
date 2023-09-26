@@ -15,14 +15,6 @@ const Play = () => {
   const [guessesLeft, setGuessesLeft] = useState(10);
   const [showGameOver, setShowGameOver] = useState(false);
 
-  // const handleShowGameOver = () => {
-  //   const guessAsNumber = parseFloat(guess); // turn string number into number
-  //   const result = game.guess(guessAsNumber);
-  //   if (result === "you have finished the game!") {
-  //     setShowGameOver(true);
-  //   }
-  // };
-
   const handleNewGame = () => {
     setShowGameOver(false);
     setGame(new Game());
@@ -201,6 +193,7 @@ const Play = () => {
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 "></div>
       </div>
 
+      {/* This is the popup for when the game is over */}
       <Modal
         show={showGameOver}
         onHide={handleNewGame}
@@ -212,7 +205,18 @@ const Play = () => {
           <Modal.Title>Game Over!</Modal.Title>
         </Modal.Header>
         <Modal.Body className="bg-cream">
-          <p>End of game! Your final score is:</p>
+          <p>Your final score is: {score}</p>
+          {game.score < 20 ? (
+            <p>You really should get to know the WTA players better</p>
+          ) : game.score < 100 ? (
+            <p>You did okay, but I'd suggest you watch a bit more tennis</p>
+          ) : game.score >= 100 && game.score < 180 ? (
+            <p>not bad but still quite a bit of room for improvement</p>
+          ) : game.score >= 180 && game.score < 200 ? (
+            <p>Great Score! You know your stuff!</p>
+          ) : (
+            game.score === 200(<p>You absolutely nailed it!!!</p>)
+          )}
         </Modal.Body>
         <Modal.Footer className="bg-cream">
           <Button
