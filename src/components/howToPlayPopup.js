@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.css";
 
 //Creating a static backdrop modal
 function HowToPlayPopup() {
@@ -12,7 +13,7 @@ function HowToPlayPopup() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
+        How to Play
       </Button>
 
       <Modal
@@ -20,20 +21,29 @@ function HowToPlayPopup() {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        className="flex h-screen bg-blue"
+        // className=" bg-blue absolute w-2/3 top-0 h-40 mt-60"
+        centered
       >
         <Modal.Header closeButton>
           <Modal.Title>How to play</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          I will not close if you click outside me. Don not even try to press
-          escape key.
+          <p>
+            This game is quite simple: You have 10 attempts to guess each
+            player's ranking. Players are all within the top 20.
+          </p>
+          <p>
+            Once you have guessed a player, a new player will appear for you to
+            guess.
+          </p>
+          <p> On guessing all players, the game ends. </p>
+          <p> On running out of guesses, the game ends. </p>
+          <p> Good Luck!! </p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
         </Modal.Footer>
       </Modal>
     </>

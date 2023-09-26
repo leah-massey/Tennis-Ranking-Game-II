@@ -7,9 +7,10 @@ export default function Navbar() {
   return (
     <div>
       <div className="w-full h-[40px] justify-between items-center px-10 bg-forest text-cream">
-        <div className="hidden md:flex">
+        {/* <div className="hidden md:flex">
           <button onClick={() => setShowPopup(true)}>How To Play</button>
-        </div>
+        </div> */}
+        <HowToPlayPopup />
       </div>
 
       {/* <HowToPlayPopup trigger={showPopup} setTrigger={setShowPopup}>

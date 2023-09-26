@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <Header />
         <Navbar />
-        <HowToPlayPopup />
+        {/* <HowToPlayPopup /> */}
         <Play />
       </header>
     </div>
