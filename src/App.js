@@ -6,7 +6,7 @@ import Play from "./pages/play";
 
 function App() {
   return (
-    <div className="app bg-mineral">
+    <div className="bg-mineral h-full min-h-screen">
       <header className="App-header">
         <Layout>
           <Router>
@@ -16,10 +16,6 @@ function App() {
             </Routes>
           </Router>
         </Layout>
-
-        {/* <Header />
-        <Navbar /> */}
-        {/* <Play /> */}
       </header>
     </div>
   );
