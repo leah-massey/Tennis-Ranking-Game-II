@@ -1,19 +1,19 @@
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook } from "react-icons/ai";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// import { auth } from "../../utils/firebase";
+import { auth } from "../utils/firebase";
 
 export default function Login() {
   //  sign in with Google
   const googleProvider = new GoogleAuthProvider();
-  // const GoogleLogin = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, googleProvider);
-  //     console.log(result.user);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const GoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log(result.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center">
@@ -24,7 +24,7 @@ export default function Login() {
         </div>
         <div className="flex flex-col gap-4">
           <button
-            // onClick={GoogleLogin}
+            onClick={GoogleLogin}
             className="text-cream bg-blue p-4 w-full font-medium rounded-lg flex align-middle gap-2"
           >
             <FcGoogle className="text-2xl" /> Sign in with google
