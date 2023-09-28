@@ -15,6 +15,7 @@ module.exports = {
       lemon: "#f2edaa",
       blue: "#62859c",
       coral: "#de643c",
+      black: "#000000",
     },
   },
   plugins: [],
