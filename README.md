@@ -1,3 +1,24 @@
+<h3 align ="center">
+The Tennis Ranking Game
+</h3>
+
+<p align="center">
+<img src="./src/assets/screenshot.png" alt="Screenshot of project" title="Tennis Ranking Game">
+</p>
+
+This project is guessing game where a user must correctly guess the ranking of a randomly generated top 20 tennis player.<br />
+I've made this as a rebuild for an earlier project, putting into practise new skills and technologies (such as TDD, OOP and Tailwind), increasing functionality and also intorducing session persistence and a login in so that users will be able to track their past scores.<br />
+<br />
+
+A player can:<br />
+<br />
+
+- make a guess<br />
+- skip a tennis player<br />
+- start again<br />
+- login (WIP)<br />
+- have their session persisted (WIP)<br />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
