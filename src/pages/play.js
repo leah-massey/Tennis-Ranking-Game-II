@@ -15,7 +15,7 @@ const Play = () => {
   const [guessesLeft, setGuessesLeft] = useState(10);
   const [showGameOver, setShowGameOver] = useState(false);
 
-  //Below is one of my attempts at getting session persistence
+  //Below is one of my attempts at getting session persistence, commented out as it was stopping the game from running.
 
   // useEffect(() => {
   //   const jsonGame = JSON.parse(localStorage.getItem("game" || new Game()));
@@ -27,6 +27,7 @@ const Play = () => {
   //   );
   // }, []);
 
+  // part of session persistence - not
   useEffect(() => {
     console.log("[useGameStore]: saving tasks to local storage");
     console.log(JSON.stringify(game));
