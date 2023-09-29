@@ -11,7 +11,7 @@ This project is guessing game where a user must correctly guess the ranking of a
 I've made this as a rebuild for an earlier project, putting into practise new skills and technologies (such as TDD, OOP and Tailwind), increasing functionality and also intorducing session persistence and a login in so that users will be able to track their past scores.<br />
 <br />
 
-A player can:<br />
+<h2>A player can:</h2><br />
 <br />
 
 - make a guess<br />
@@ -19,6 +19,7 @@ A player can:<br />
 - start again<br />
 - login (WIP)<br />
 - have their session persisted (WIP)<br />
+- Find out how to play <br />
 
 # Getting Started with Create React App
 
