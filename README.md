@@ -12,7 +12,6 @@ I've made this as a rebuild for an earlier project, putting into practise new sk
 <br />
 
 <h2>A player can:</h2><br />
-<br />
 
 - make a guess<br />
 - skip a tennis player<br />
