@@ -7,6 +7,7 @@ The Tennis Ranking Game
 </p>
 
 This project is guessing game where a user must correctly guess the ranking of a randomly generated top 20 tennis player.<br />
+<br />
 I've made this as a rebuild for an earlier project, putting into practise new skills and technologies (such as TDD, OOP and Tailwind), increasing functionality and also intorducing session persistence and a login in so that users will be able to track their past scores.<br />
 <br />
 
