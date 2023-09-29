@@ -1,6 +1,41 @@
 const femalePlayerList = require("./femalePlayerList");
 
+const SerializedGame = {
+  guessedPlayers: [],
+  score: 0,
+  guessesLeft: 0,
+  currentPlayer: {},
+};
+
 module.exports = class Game {
+  //Typescript verison (from tutorial)
+  // static serialize = (game: Game): SerializedGame => {
+  //   return {
+  //     guessedPlayers: game.guessedPlayers,
+  //     score: game.score,
+  //     guessesLeft: game.guessesLeft,
+  //     currentPlayer: game.currentPlayer,
+  //   };
+  // };
+
+  static serialize = (game) => {
+    return {
+      guessedPlayers: game.guessedPlayers,
+      score: game.score,
+      guessesLeft: game.guessesLeft,
+      currentPlayer: game.currentPlayer,
+    };
+  };
+
+  //Typescript version (from tutorial)
+  // static deserialize = (serializedGame: SerializedGame): Game => {
+  //   return new Game();
+  // };
+
+  static deserialize = (serializedGame) => {
+    return new Game();
+  };
+
   constructor() {
     this.guessedPlayers = [];
     this.score = 0;
@@ -33,21 +68,18 @@ module.exports = class Game {
     ) {
       this.guessedPlayers.push(number);
       this.score += this.guessesLeft;
-      console.log("you have finished the game!");
       return "you have finished the game!";
     }
     if (number === this.currentPlayer.ranking) {
       this.guessedPlayers.push(number);
       this.score += this.guessesLeft;
       this.reset();
-      console.log("correct");
       return "correct";
     } else {
       this.guessesLeft--;
       if (this.guessesLeft === 0) {
         return "game over";
       } else {
-        console.log("incorrect");
         return "incorrect";
       }
     }
@@ -73,4 +105,28 @@ module.exports = class Game {
       this.guessesLeft = 10;
     }
   }
+
+  // // Add a custom toJSON method
+  // toJSON() {
+  //   // Return a plain object representing the game state
+  //   return {
+  //     guessedPlayers: this.guessedPlayers,
+  //     score: this.score,
+  //     guessesLeft: this.guessesLeft,
+  //     currentPlayer: this.currentPlayer,
+  //     // Include other properties you want to save
+  //   };
+  // }
+
+  // // Add a static method to create a Game instance from serialized data
+  // static fromJSON(jsonData) {
+  //   const game = new Game();
+  //   // Restore the game state using the parsed data
+  //   game.guessedPlayers = jsonData.guessedPlayers;
+  //   game.score = jsonData.score;
+  //   game.guessesLeft = jsonData.guessesLeft;
+  //   game.currentPlayer = jsonData.currentPlayer;
+
+  //   return game;
+  // }
 };

@@ -15,6 +15,24 @@ const Play = () => {
   const [guessesLeft, setGuessesLeft] = useState(10);
   const [showGameOver, setShowGameOver] = useState(false);
 
+  //Below is one of my attempts at getting session persistence
+
+  // useEffect(() => {
+  //   const jsonGame = JSON.parse(localStorage.getItem("game" || new Game()));
+  //   console.log("[useGameStore]: loading tasks from local storage ");
+  //   console.log(JSON.parse(localStorage.getItem("game" || new Game())));
+  //   console.log([jsonGame]);
+  //   setGame(
+  //     [jsonGame].map((guessedPlayers) => Game.deserialize(guessedPlayers)) // map not working on object. In tutorial demo,
+  //   );
+  // }, []);
+
+  useEffect(() => {
+    console.log("[useGameStore]: saving tasks to local storage");
+    console.log(JSON.stringify(game));
+    localStorage.setItem("game", JSON.stringify(game));
+  }, [game]);
+
   const handleNewGame = () => {
     setShowGameOver(false);
     setGame(new Game());
@@ -57,7 +75,6 @@ const Play = () => {
       setScore(game.score);
       setGuessedPlayers(game.guessedPlayers);
       setShowGameOver(true);
-      console.log(`end of game? ${game.endGame()}`);
     } else if (result === "correct") {
       setScore(game.score);
       setGuessedPlayers(game.guessedPlayers);
