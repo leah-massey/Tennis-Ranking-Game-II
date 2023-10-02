@@ -1,13 +1,6 @@
 const femalePlayerList = require("./femalePlayerList");
 
-// const SerializedGame = {
-//   guessedPlayers: [],
-//   score: 0,
-//   guessesLeft: 0,
-//   currentPlayer: {},
-// };
-
-type SerializedGame = {
+export type SerializedGame = {
   guessedPlayers: number[];
   score: number;
   guessesLeft: number;
@@ -26,23 +19,10 @@ export class Game {
     };
   };
 
-  // static serialize = (game) => {
-  //   return {
-  //     guessedPlayers: game.guessedPlayers,
-  //     score: game.score,
-  //     guessesLeft: game.guessesLeft,
-  //     currentPlayer: game.currentPlayer,
-  //   };
-  // };
-
   //Typescript version (from tutorial)
   static deserialize = (serializedGame: SerializedGame): Game => {
     return new Game();
   };
-
-  // static deserialize = (serializedGame) => {
-  //   return new Game();
-  // };
 
   constructor() {
     this.guessedPlayers = [];
@@ -57,7 +37,7 @@ export class Game {
 
   randomPlayer() {
     //. generate random number between 0 and 19
-    function generateRandomNumber() {
+    function generateRandomNumber(): number {
       return Math.trunc(Math.random() * 20);
     }
 
@@ -113,28 +93,4 @@ export class Game {
       this.guessesLeft = 10;
     }
   }
-
-  // // Add a custom toJSON method
-  // toJSON() {
-  //   // Return a plain object representing the game state
-  //   return {
-  //     guessedPlayers: this.guessedPlayers,
-  //     score: this.score,
-  //     guessesLeft: this.guessesLeft,
-  //     currentPlayer: this.currentPlayer,
-  //     // Include other properties you want to save
-  //   };
-  // }
-
-  // // Add a static method to create a Game instance from serialized data
-  // static fromJSON(jsonData) {
-  //   const game = new Game();
-  //   // Restore the game state using the parsed data
-  //   game.guessedPlayers = jsonData.guessedPlayers;
-  //   game.score = jsonData.score;
-  //   game.guessesLeft = jsonData.guessesLeft;
-  //   game.currentPlayer = jsonData.currentPlayer;
-
-  //   return game;
-  // }
 }

@@ -5,15 +5,21 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.css";
 
+type Player = {
+  firstName: string;
+  lastName: string;
+  ranking: number;
+};
+
 const Play = () => {
-  const [game, setGame] = useState(new Game());
-  const [player, setPlayer] = useState(game.currentPlayer);
-  const [guessedPlayers, setGuessedPlayers] = useState([]);
-  const [guess, setGuess] = useState("");
-  const [message, setMessage] = useState("");
-  const [score, setScore] = useState(0);
-  const [guessesLeft, setGuessesLeft] = useState(10);
-  const [showGameOver, setShowGameOver] = useState(false);
+  const [game, setGame] = useState<Game>(new Game());
+  const [player, setPlayer] = useState<Player>(game.currentPlayer);
+  const [guessedPlayers, setGuessedPlayers] = useState<number[]>([]);
+  const [guess, setGuess] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [score, setScore] = useState<number>(0);
+  const [guessesLeft, setGuessesLeft] = useState<number>(10);
+  const [showGameOver, setShowGameOver] = useState<boolean>(false);
 
   //Below is one of my attempts at getting session persistence, commented out as it was stopping the game from running.
 
@@ -21,7 +27,7 @@ const Play = () => {
     const jsonGame = JSON.parse(localStorage.getItem("game") || new Game());
     console.log("[useGameStore]: Loading games from local storage");
     console.log(JSON.parse(localStorage.getItem("game") || new Game()));
-    setGame(jsonGame);
+    setGame(jsonGame.map((game) => Game.deserialize(game)));
   }, []);
 
   // This is successfully saving the game as a json object to local stoage each time a the game is updated.
