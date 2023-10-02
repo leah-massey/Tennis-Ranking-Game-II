@@ -1,24 +1,23 @@
 const femalePlayerList = require("./femalePlayerList");
 
-const SerializedGame = {
-  guessedPlayers: [],
-  score: 0,
-  guessesLeft: 0,
-  currentPlayer: {},
+// const SerializedGame = {
+//   guessedPlayers: [],
+//   score: 0,
+//   guessesLeft: 0,
+//   currentPlayer: {},
+// };
+
+type SerializedGame = {
+  guessedPlayers: number[];
+  score: number;
+  guessesLeft: number;
+  currentPlayer: Record<string, any>;
 };
 
-module.exports = class Game {
+// module.exports = class Game {
+export class Game {
   //Typescript verison (from tutorial)
-  // static serialize = (game: Game): SerializedGame => {
-  //   return {
-  //     guessedPlayers: game.guessedPlayers,
-  //     score: game.score,
-  //     guessesLeft: game.guessesLeft,
-  //     currentPlayer: game.currentPlayer,
-  //   };
-  // };
-
-  static serialize = (game) => {
+  static serialize = (game: Game): SerializedGame => {
     return {
       guessedPlayers: game.guessedPlayers,
       score: game.score,
@@ -27,14 +26,23 @@ module.exports = class Game {
     };
   };
 
-  //Typescript version (from tutorial)
-  // static deserialize = (serializedGame: SerializedGame): Game => {
-  //   return new Game();
+  // static serialize = (game) => {
+  //   return {
+  //     guessedPlayers: game.guessedPlayers,
+  //     score: game.score,
+  //     guessesLeft: game.guessesLeft,
+  //     currentPlayer: game.currentPlayer,
+  //   };
   // };
 
-  static deserialize = (serializedGame) => {
+  //Typescript version (from tutorial)
+  static deserialize = (serializedGame: SerializedGame): Game => {
     return new Game();
   };
+
+  // static deserialize = (serializedGame) => {
+  //   return new Game();
+  // };
 
   constructor() {
     this.guessedPlayers = [];
@@ -129,4 +137,4 @@ module.exports = class Game {
 
   //   return game;
   // }
-};
+}
