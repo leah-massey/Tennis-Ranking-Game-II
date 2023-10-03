@@ -6,7 +6,11 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.css";
 
 const Play = () => {
-  const [game, setGame] = useState(new Game());
+  // const [game, setGame] = useState(new Game());
+  const [game, setGame] = useState(() => {
+    const jsonGame = JSON.parse(localStorage.getItem("game"));
+    return jsonGame ? Game.deserialize(jsonGame) : new Game();
+  });
   const [player, setPlayer] = useState(game.currentPlayer);
   const [guessedPlayers, setGuessedPlayers] = useState([]);
   const [guess, setGuess] = useState("");
@@ -15,24 +19,16 @@ const Play = () => {
   const [guessesLeft, setGuessesLeft] = useState(10);
   const [showGameOver, setShowGameOver] = useState(false);
 
-  //Below is one of my attempts at getting session persistence, commented out as it was stopping the game from running.
-
-  // useEffect(() => {
-  //   const jsonGame = JSON.parse(localStorage.getItem("game" || new Game()));
-  //   console.log("[useGameStore]: loading tasks from local storage ");
-  //   console.log(JSON.parse(localStorage.getItem("game" || new Game())));
-  //   console.log([jsonGame]);
-  //   setGame(
-  //     [jsonGame].map((guessedPlayers) => Game.deserialize(guessedPlayers)) // map not working on object. In tutorial demo,
-  //   );
-  // }, []);
-
-  // part of session persistence - not
   useEffect(() => {
-    console.log("[useGameStore]: saving tasks to local storage");
-    console.log(JSON.stringify(game));
+    const jsonGame = JSON.parse(localStorage.getItem("game")) || new Game();
+    const savedGame = Object.assign(new Game(), jsonGame);
+    setGame(savedGame);
+    setScore(savedGame.score);
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("game", JSON.stringify(game));
-  }, [game]);
+  });
 
   const handleNewGame = () => {
     setShowGameOver(false);
