@@ -215,6 +215,12 @@ describe("Game", () => {
     expect(game.guessesLeft).toEqual(10);
   });
 
+  //20
+  test("at the start of a hame, this.skippedPlayers is an empty array", () => {
+    const game = new Game();
+    expect(game.skippedPlayers.length).toEqual(0);
+  });
+
   // .guesses left if player has been skipped
   // can you skip if you've staretd guessingh?
 });
