@@ -40,8 +40,8 @@ const Play = () => {
   };
 
   useEffect(() => {
-    setGuessesLeft(game.guessesLeft);
-  }, [game.guessesLeft]);
+    setGuessesLeft(game.currentPlayer.guessesLeft);
+  }, [game.currentPlayer.guessesLeft]);
 
   useEffect(() => {
     setPlayer(game.currentPlayer);
@@ -66,7 +66,7 @@ const Play = () => {
     const result = game.guess(guessAsNumber);
 
     guessMessage(guessAsNumber, player.ranking);
-    setGuessesLeft(game.guessesLeft);
+    setGuessesLeft(game.currentPlayer.guessesLeft);
 
     if (result === "you have finished the game!") {
       setScore(game.score);
@@ -91,7 +91,10 @@ const Play = () => {
 
   const handleKeyPress = (e) => {
     // Key press 'enter'
-    if (e.keyCode === 13 || (e.which === 13 && game.guessesLeft > 0)) {
+    if (
+      e.keyCode === 13 ||
+      (e.which === 13 && game.currentPlayer.guessesLeft > 0)
+    ) {
       handleCheckButton();
     }
   };
@@ -141,7 +144,7 @@ const Play = () => {
           <div name="middle-column">
             <div className="bg-cream ml-5 mr-5 w-80 h-96 pt-10">
               <div className="flex flex-col items-center">
-                <p className="font-bold text-purple-950 pb-7">
+                <p className="font-bold text-purple-950 pb-6">
                   Current Player:
                 </p>
                 <div className="bg-black w-60 h-60">
@@ -150,7 +153,7 @@ const Play = () => {
                     alt="player"
                   />
                 </div>
-                <p className="pt-3">
+                <p className="pt-1">
                   {player.firstName} {player.secondName}
                 </p>
               </div>
@@ -168,7 +171,7 @@ const Play = () => {
           <div name="right-column ">
             <div className="bg-cream ml-5 w-80 h-96 pt-10">
               <div className="pt-10">
-                {game.guessesLeft === 0 ? (
+                {game.currentPlayer.guessesLeft === 0 ? (
                   <p className="text-center flex mx-auto w-3/ pt-6">
                     Bad luck, a bit more practise and you'll get there!
                   </p>
@@ -186,7 +189,8 @@ const Play = () => {
               </div>
               <div className=" bg-purple-100 w-full h-40">
                 <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-3 ">
-                  {guessedPlayers.length < 20 && game.guessesLeft !== 0 ? (
+                  {guessedPlayers.length < 20 &&
+                  game.currentPlayer.guessesLeft !== 0 ? (
                     <p className="text-3xl">Score: {score}</p>
                   ) : (
                     <p className="text-3xl">Final Score: {score}</p>

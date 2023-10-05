@@ -1,34 +1,29 @@
 const Game = require("../components/Game");
 
 describe("Game", () => {
-  //1
   test("a game has an initial score of 0", () => {
     const game = new Game();
     expect(game.score).toEqual(0);
   });
 
-  //2.
   test("a game initially has 10 guesses available", () => {
     const game = new Game();
-    expect(game.guessesLeft).toEqual(10);
+    expect(game.currentPlayer.guessesLeft).toEqual(10);
   });
 
-  //3.
   test("guessesLeft decreases by 1 when 1 incorrect guess is made.", () => {
     const game = new Game();
-    game.guess(!game.currentPlayer.ranking);
-    expect(game.guessesLeft).toEqual(9);
+    game.guess(0);
+    expect(game.currentPlayer.guessesLeft).toEqual(9);
   });
 
-  //4.
   test("guessesLeft decreases by 2 when 2 incorrect guesses are made.", () => {
     const game = new Game();
-    game.guess(!game.currentPlayer.ranking);
-    game.guess(!game.currentPlayer.ranking);
-    expect(game.guessesLeft).toEqual(8);
+    game.guess(0);
+    game.guess(0);
+    expect(game.currentPlayer.guessesLeft).toEqual(8);
   });
 
-  //4.1
   test("after ten incorrect guesses for the currentPlayer, game ends.", () => {
     const game = new Game();
     for (let i = 0; i < 9; i++) {
@@ -37,12 +32,11 @@ describe("Game", () => {
     expect(game.guess(!game.currentPlayer.ranking)).toMatch(`game over`);
   });
 
-  //4.2
   test("when a correct guess is made, guessesLeft resets", () => {
     const game = new Game();
-    game.guess(!game.currentPlayer.ranking);
+    game.guess(0);
     game.guess(game.currentPlayer.ranking);
-    expect(game.guessesLeft).toEqual(10);
+    expect(game.currentPlayer.guessesLeft).toEqual(10);
   });
 
   // //cgeck this one, I don't think it's working.
@@ -54,51 +48,42 @@ describe("Game", () => {
   //   expect(game.currentPlayer).not.toEqual(currentPlayer);
   // });
 
-  //6.
   test("score does not increase with an incorrect guess", () => {
     const game = new Game();
     game.guess(!game.currentPlayer.ranking);
     expect(game.score).toEqual(0);
   });
 
-  //7.
   test("when a correct guess is made, score increases by guessesLeft", () => {
     const game = new Game();
-    game.guess(!game.currentPlayer.ranking);
+    game.guess(0);
     game.guess(game.currentPlayer.ranking);
     expect(game.score).toEqual(9);
   });
 
-  //8.
-  test(".reset() returns guessesLeft to 10", () => {
+  test(".generateNewPlayer() returns a player with guessesLeft set to 10", () => {
     const game = new Game();
-    game.guess(!game.currentPlayer.ranking);
-    game.guess(!game.currentPlayer.ranking);
-    game.reset();
-
-    expect(game.guessesLeft).toEqual(10);
+    const player = game.generateNewPlayer();
+    expect(player.guessesLeft).toEqual(10);
   });
 
-  //8.2
-  test(".reset() generates the same player, if all other 19 players have already been guessed", () => {
+  test(".generateNewPlayer() generates the same player, if all other 19 players have already been guessed", () => {
     const game = new Game();
     for (let i = 0; i < 19; i++) {
       game.guess(game.currentPlayer.ranking);
     }
     const currentPlayer = game.currentPlayer;
-    game.reset();
+    game.generateNewPlayer();
     expect(game.currentPlayer).toEqual(currentPlayer);
   });
 
-  //9
   test("this.currentPlayer is a valid player", () => {
     const game = new Game();
-    expect(game.currentPlayer.firstname).not.toEqual(null);
+    expect(game.currentPlayer.firstName).not.toEqual(null);
     expect(game.currentPlayer.secondName).not.toEqual(null);
     expect(game.currentPlayer.ranking).not.toEqual(null);
   });
 
-  //10
   test("when guess is correct, a new currentPlayer is generated", () => {
     const game = new Game();
     const firstPlayer = game.currentPlayer.ranking;
@@ -106,7 +91,6 @@ describe("Game", () => {
     expect(game.currentPlayer).not.toEqual(firstPlayer);
   });
 
-  //11
   test("when a guess is correct currentPlayer ranking gets added to this.guessedPlayers", () => {
     const game = new Game();
     const firstPlayer = game.currentPlayer.ranking;
@@ -116,7 +100,6 @@ describe("Game", () => {
     expect(game.guessedPlayers).toEqual([firstPlayer, secondPlayer]);
   });
 
-  //13
   test("when guess is not correct, currentPlayer remains the same", () => {
     const game = new Game();
     const firstPlayer = game.currentPlayer;
@@ -124,7 +107,6 @@ describe("Game", () => {
     expect(game.currentPlayer).toEqual(firstPlayer);
   });
 
-  //14;
   test("when 20 correct guesses have been made, guessedPlayers length is 20", () => {
     const game = new Game();
     for (let i = 0; i < 20; i++) {
@@ -134,17 +116,6 @@ describe("Game", () => {
     expect(game.guessedPlayers).toHaveLength(20);
   });
 
-  // //14.1;
-  // test("when 20 correct guesses have been made, 'game completer' is returned", () => {
-  //   const game = new Game();
-  //   for (let i = 0; i < 20; i++) {
-  //     const playerRanking = game.currentPlayer.ranking;
-  //     game.guess(playerRanking); // Make a correct guess
-  //   }
-  //   expect(game.currentPlayer).toBe("game complete!");
-  // });
-
-  //14.1;
   test("when 20 correct guesses have been made, 'you have finished the game!' is returned", () => {
     const game = new Game();
     for (let i = 0; i < 19; i++) {
@@ -155,16 +126,16 @@ describe("Game", () => {
     expect(game.guess(finalPlayerRanking)).toBe("you have finished the game!");
   });
 
-  //15
   test("when 20 correct guesses are made in a row, final score is 200", () => {
     const game = new Game();
     for (let i = 0; i < 20; i++) {
+      console.log(`this is currentPlayer ${game.currentPlayer}`);
       game.guess(game.currentPlayer.ranking);
+      console.log(`this is the score ${game.score}`);
     }
     expect(game.score).toBe(200);
   });
 
-  //17
   test("once a player has been guessed, they will not appear again", () => {
     const game = new Game();
     const playerCount = 20;
@@ -177,7 +148,6 @@ describe("Game", () => {
     }
   });
 
-  //18
   test("when all players have been guessed, endGame() returns 'true'", () => {
     const game = new Game();
 
@@ -188,7 +158,6 @@ describe("Game", () => {
     expect(game.endGame()).toBe(true);
   });
 
-  //18.1
   test("when 20 correct guesses have been made, endGame() returns true", () => {
     const game = new Game();
     for (let i = 0; i < 20; i++) {
@@ -197,7 +166,6 @@ describe("Game", () => {
     expect(game.endGame()).toBe(true);
   });
 
-  //17
   test("skip generates a new random player", () => {
     const game = new Game();
     const firstPlayer = game.currentPlayer;
@@ -205,22 +173,16 @@ describe("Game", () => {
     expect(game.currentPlayer).not.toEqual(firstPlayer);
   });
 
-  //19
-  test("when a player is skipped, the new player's guess attempts are refreshed to 10", () => {
+  test("when the first player is skipped after two incorrect guesses, the new player's guessesLeft are 10", () => {
     const game = new Game();
-    const firstPlayer = game.currentPlayer;
-    game.guess(!firstPlayer);
-    game.guess(!firstPlayer);
+
+    console.log(`at the start of a game: ${game.currentPlayer.guessesLeft}`);
+    game.guess(0);
+    console.log(`after 1 go: ${game.currentPlayer.guessesLeft}`);
+    game.guess(0);
+    console.log(`after 2 goes: ${game.currentPlayer.guessesLeft}`);
     game.skip();
-    expect(game.guessesLeft).toEqual(10);
+    console.log(`after skipped: ${game.currentPlayer.guessesLeft}`);
+    expect(game.currentPlayer.guessesLeft).toEqual(10);
   });
-
-  //20
-  test("at the start of a hame, this.skippedPlayers is an empty array", () => {
-    const game = new Game();
-    expect(game.skippedPlayers.length).toEqual(0);
-  });
-
-  // .guesses left if player has been skipped
-  // can you skip if you've staretd guessingh?
 });
