@@ -10,18 +10,19 @@ export default function Navbar() {
   return (
     <nav>
       <div className=" w-full h-[40px] px-10 bg-forest text-cream font-mono">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
-          <div>
-            <ul className="hidden md:flex">
-              <li>
+        <div className="max-w-screen-xl flex justify-center flex-wrap items-center   mx-auto">
+          <div className="flex justify-center items-center text-cente mx-auto">
+            <ul className=" hidden justify-center md:flex p-0 m-0">
+              <li className=" px-5 pt-2">
+                <p>Play</p>
+              </li>
+              <p className="pt-2">|</p>
+              <li className=" px-5">
                 <HowToPlayPopup />
               </li>
-              <li>
-                <Nav>
-                  <Nav.Item>
-                    <Nav.Link href="/login">Login</Nav.Link>
-                  </Nav.Item>
-                </Nav>
+              <p className="pt-2">|</p>
+              <li className="  px-5 pt-2">
+                <p>Login</p>
               </li>
             </ul>
 
