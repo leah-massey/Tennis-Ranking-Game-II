@@ -114,27 +114,27 @@ const Play = () => {
 
   return (
     <>
-      <div className="items-center h-full">
+      <div className="items-center h-full font-mono">
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 ">
           <div name="left column">
-            <div className="bg-cream mr-5 h-96 w-80 pt-10">
-              <p className="text-center">Your guess</p>
+            <div className="box bg-cream rounded-lg mr-5 ml-5 w-80 h-96 pt-10">
               <div className=" w-full h-40">
                 <input
                   placeholder=""
                   type="number"
-                  className="border-2 flex mt-10 mx-auto items-center h-full w-2/3 justify-center pt-1 rounded-lg text-5xl text-center"
+                  className="border-2 flex mt-9 mx-auto items-center h-full w-2/3 justify-center pt-1 rounded-lg text-5xl text-center"
                   value={guess}
                   onChange={(e) => setGuess(e.target.value)}
                   onKeyPress={handleKeyPress}
                 />
               </div>
+              <p className="text-center pt-4">Your guess</p>
               <p className="text-center pt-5">{message}</p>
             </div>
             <div className="w-full pt-3">
               <button
                 disabled={game.endGame() === true}
-                className="border-2 flex mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
+                className="w-52 border-2 flex items-center justify-center mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
                 onClick={handleCheckButton}
               >
                 Check
@@ -142,18 +142,17 @@ const Play = () => {
             </div>
           </div>
           <div name="middle-column">
-            <div className="bg-cream ml-5 mr-5 w-80 h-96 pt-10">
+            <div className="box bg-cream rounded-lg ml-5 mr-5 w-80 h-96 pt-10">
               <div className="flex flex-col items-center">
-                <p className="font-bold text-purple-950 pb-6">
-                  Current Player:
-                </p>
-                <div className="bg-black w-60 h-60">
+                <p className="font-bold text-purple-950 ">Current Player:</p>
+                <div className="w-60 h-60 ">
                   <img
+                    className="rounded-lg border-2"
                     src={require(`../images/player-${player.ranking}.png`)}
                     alt="player"
                   />
                 </div>
-                <p className="pt-1">
+                <p className="pt-3">
                   {player.firstName} {player.secondName}
                 </p>
               </div>
@@ -161,7 +160,7 @@ const Play = () => {
             <div className="pt-3">
               <button
                 disabled={game.endGame() === true}
-                className="border-2 flex mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
+                className="w-52 border-2 flex items-center justify-center mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
                 onClick={handleSkipButton}
               >
                 Skip player
@@ -169,26 +168,9 @@ const Play = () => {
             </div>
           </div>
           <div name="right-column ">
-            <div className="bg-cream ml-5 w-80 h-96 pt-10">
-              <div className="pt-10">
-                {game.currentPlayer.guessesLeft === 0 ? (
-                  <p className="text-center flex mx-auto w-3/ pt-6">
-                    Bad luck, a bit more practise and you'll get there!
-                  </p>
-                ) : guessedPlayers.length < 20 ? (
-                  <p className="text-center flex mx-auto w-3/4 pt-6">
-                    You have {guessesLeft} attempts left to guess{" "}
-                    {player.firstName}'s ranking. (it's
-                    {player.ranking})
-                  </p>
-                ) : (
-                  <p className="text-center pt-6">
-                    Well done, you finished the game!!
-                  </p>
-                )}
-              </div>
-              <div className=" bg-purple-100 w-full h-40">
-                <div className=" bg-white w-52 flex mt-10 mx-auto items-center h-full justify-center pt-3 ">
+            <div className="box bg-cream rounded-lg ml-5 mr-5 w-80 h-96 pt-10">
+              <div className="w-full h-40 mt-9">
+                <div className="border-2 bg-white w-2/3 flex mx-auto items-center h-full justify-center pt-3 rounded-lg ">
                   {guessedPlayers.length < 20 &&
                   game.currentPlayer.guessesLeft !== 0 ? (
                     <p className="text-3xl">Score: {score}</p>
@@ -196,11 +178,28 @@ const Play = () => {
                     <p className="text-3xl">Final Score: {score}</p>
                   )}
                 </div>
+                <div>
+                  {game.currentPlayer.guessesLeft === 0 ? (
+                    <p className="text-center flex mx-auto w-3/ pt-6">
+                      Bad luck, a bit more practise and you'll get there!
+                    </p>
+                  ) : guessedPlayers.length < 20 ? (
+                    <p className="text-center flex mx-auto w-3/4 pt-6">
+                      You have {guessesLeft} attempts left to guess{" "}
+                      {player.firstName}'s ranking. (it's
+                      {player.ranking})
+                    </p>
+                  ) : (
+                    <p className="text-center pt-6">
+                      Well done, you finished the game!!
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
             <div className="pt-3">
               <button
-                className=" border-2 flex mx-auto py-3 px-5 rounded-lg  bg-coral hover:bg-blue"
+                className="w-52 border-2 flex items-center justify-center mx-auto py-3 rounded-lg  bg-coral hover:bg-blue"
                 onClick={handleRestartButton}
               >
                 Start Game Again

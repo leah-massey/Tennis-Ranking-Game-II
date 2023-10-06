@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Heading font (faster) */
 @import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@1&family=Faster+One&family=Rampart+One&family=Roboto+Mono:wght@300&display=swap");
+
+/*. bodyfont (courier prime) */
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 
 body {
   margin: 0;
@@ -23,20 +27,10 @@ code {
 }
 
 .title {
-  background-color: #ffffff;
   width: 100%;
   max-width: 700px;
   height: 130px;
-  font-size: 50px;
   margin: auto;
-  color: #0d0b0b;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 8px;
-  padding-right: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .font-faster {
