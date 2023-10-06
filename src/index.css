@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Heading font (faster) */
 @import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@1&family=Faster+One&family=Rampart+One&family=Roboto+Mono:wght@300&display=swap");
+
+/*. bodyfont (courier prime) */
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 
 body {
   margin: 0;

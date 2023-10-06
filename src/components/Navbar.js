@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className=" w-full h-[40px] px-10 bg-forest text-cream">
+      <div className=" w-full h-[40px] px-10 bg-forest text-cream font-mono">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <div>
             <ul className="hidden md:flex">

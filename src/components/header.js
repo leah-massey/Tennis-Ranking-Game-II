@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { Router } from "react-router-dom";
 
 export default function Header() {
   return (
