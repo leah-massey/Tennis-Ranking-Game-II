@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav>
       <div className=" w-full h-[40px] px-10 bg-forest text-cream font-mono">
         <div className="max-w-screen-xl flex justify-center flex-wrap items-center   mx-auto">
-          <div className="flex justify-center items-center text-cente mx-auto">
+          <div className="flex justify-center items-center text-center mx-auto">
             <ul className=" hidden justify-center md:flex p-0 m-0">
               <li className=" px-5 pt-2">
                 <p>Play</p>
