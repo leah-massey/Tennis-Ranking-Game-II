@@ -147,7 +147,7 @@ const Play = () => {
                 <p className="font-bold text-purple-950 ">Current Player:</p>
                 <div className="w-60 h-60 ">
                   <img
-                    className="rounded-lg"
+                    className="rounded-lg border-2"
                     src={require(`../images/player-${player.ranking}.png`)}
                     alt="player"
                   />
