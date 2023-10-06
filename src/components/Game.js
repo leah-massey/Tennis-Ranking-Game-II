@@ -1,6 +1,6 @@
 const femalePlayerList = require("./femalePlayerList");
 
-module.exports = class Game {
+export default class Game {
   static deserialize(data) {
     const game = new Game();
     game.guessedPlayers = data.guessedPlayers;
@@ -93,4 +93,4 @@ module.exports = class Game {
       this.currentPlayer = newPlayer;
     }
   }
-};
+}
