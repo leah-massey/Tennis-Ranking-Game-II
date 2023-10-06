@@ -186,8 +186,7 @@ const Play = () => {
                   ) : guessedPlayers.length < 20 ? (
                     <p className="text-center flex mx-auto w-3/4 pt-6">
                       You have {guessesLeft} attempts left to guess{" "}
-                      {player.firstName}'s ranking. (it's
-                      {player.ranking})
+                      {player.firstName}'s ranking. (it's {player.ranking})
                     </p>
                   ) : (
                     <p className="text-center pt-6">
