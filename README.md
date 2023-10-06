@@ -21,7 +21,7 @@ I am currently working on a login feature so that users can keep track of past s
 - start again<br />
 - login (WIP)<br />
 - have their session persisted (WIP)<br />
-- Find out how to play <br />
+- Find out how to play<br />
 
 # Getting Started with Create React App
 
