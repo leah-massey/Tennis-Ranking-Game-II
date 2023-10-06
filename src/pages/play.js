@@ -51,13 +51,13 @@ const Play = () => {
     const playerGuess = Number(guess);
 
     if (playerGuess < numberToGuess) {
-      setMessage("they're not that good!");
+      setMessage("They're not that good!");
     } else if (playerGuess > numberToGuess) {
-      setMessage("you underestimate them");
+      setMessage("You underestimate them.");
     } else if (playerGuess === numberToGuess && guessedPlayers.length === 20) {
-      setMessage("bang on! This is end of game!");
+      setMessage("Bang on! This is end of game!");
     } else if (playerGuess === numberToGuess) {
-      setMessage("bang on!");
+      setMessage("Bang on!");
     }
   }
 
@@ -128,8 +128,8 @@ const Play = () => {
                   onKeyPress={handleKeyPress}
                 />
               </div>
-              <p className="text-center pt-4">Your guess</p>
-              <p className="text-center pt-5">{message}</p>
+              <p className="text-center pt-4">Your guess 👆🏻</p>
+              <p className="text-center pt-2">{message}</p>
             </div>
             <div className="w-full pt-3">
               <button
