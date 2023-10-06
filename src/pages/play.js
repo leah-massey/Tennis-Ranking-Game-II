@@ -129,7 +129,7 @@ const Play = () => {
                 />
               </div>
               <p className="text-center pt-4">Your guess 👆🏻</p>
-              <p className="text-center pt-2">{message}</p>
+              <p className="text-center -my-4">{message}</p>
             </div>
             <div className="w-full pt-3">
               <button
@@ -186,7 +186,8 @@ const Play = () => {
                   ) : guessedPlayers.length < 20 ? (
                     <p className="text-center flex mx-auto w-3/4 pt-6">
                       You have {guessesLeft} attempts left to guess{" "}
-                      {player.firstName}'s ranking. (it's {player.ranking})
+                      {player.firstName}'s ranking. (psst, it's {player.ranking}{" "}
+                      🤫)
                     </p>
                   ) : (
                     <p className="text-center pt-6">

@@ -18,10 +18,18 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="bg-cream w-2/3 mt-32 p-10 rounded-lg max-w-[500px] ">
-        <h2 className="text-3xl font-medium"> Join today</h2>
-        <div className="py-4">
-          <h3>Sign in with one of the providers </h3>
+      <div className="bg-cream w-2/3 mt-32 p-10 rounded-lg max-w-[500px] font-mono">
+        <h2 className="text-3xl font-medium flex items-center justify-center">
+          {" "}
+          Join today
+        </h2>
+        <div className="py-4 ">
+          <p className="flex items-center justify-center">
+            Still tinkering with this bit...{" "}
+          </p>
+          <p className="flex items-center justify-center">
+            please come back again soon!
+          </p>
         </div>
         <div className="flex flex-col gap-4">
           <button

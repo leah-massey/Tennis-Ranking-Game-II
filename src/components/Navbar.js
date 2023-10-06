@@ -14,15 +14,22 @@ export default function Navbar() {
           <div className="flex justify-center items-center text-center mx-auto">
             <ul className=" hidden justify-center md:flex p-0 m-0">
               <li className=" px-5 pt-2">
-                <p>Play</p>
+                <a href="/" className="text-cream no-underline tracking-wide">
+                  Play
+                </a>
               </li>
               <p className="pt-2">|</p>
-              <li className=" px-5">
+              <li className="tracking-wide px-5">
                 <HowToPlayPopup />
               </li>
               <p className="pt-2">|</p>
               <li className="  px-5 pt-2">
-                <p>Login</p>
+                <a
+                  href="/Login"
+                  className="text-cream no-underline tracking-wide"
+                >
+                  Login
+                </a>
               </li>
             </ul>
 
