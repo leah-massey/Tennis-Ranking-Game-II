@@ -122,7 +122,7 @@ const Play = () => {
                 <input
                   placeholder=""
                   type="number"
-                  className="border-8 border-blue flex mt-9 mx-auto items-center h-full w-2/3 justify-center pt-1 rounded-lg text-5xl text-center"
+                  className="border-2 flex mt-9 mx-auto items-center h-full w-2/3 justify-center pt-1 rounded-lg text-5xl text-center"
                   value={guess}
                   onChange={(e) => setGuess(e.target.value)}
                   onKeyPress={handleKeyPress}
@@ -170,7 +170,7 @@ const Play = () => {
           <div name="right-column ">
             <div className="box bg-cream rounded-lg ml-5 mr-5 w-80 h-96 pt-10">
               <div className="w-full h-40 mt-9">
-                <div className="border-8 border-blue bg-white w-2/3 flex mx-auto items-center h-full justify-center pt-3 rounded-lg ">
+                <div className="border-2 bg-white w-2/3 flex mx-auto items-center h-full justify-center pt-3 rounded-lg ">
                   {guessedPlayers.length < 20 &&
                   game.currentPlayer.guessesLeft !== 0 ? (
                     <p className="text-3xl">Score: {score}</p>
