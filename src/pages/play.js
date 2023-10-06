@@ -117,7 +117,7 @@ const Play = () => {
       <div className="items-center h-full">
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 ">
           <div name="left column">
-            <div className="bg-cream mr-5 h-96 w-80 pt-10">
+            <div className="box bg-cream rounded-lg mr-5 ml-5 w-80 h-96 pt-10">
               <p className="text-center">Your guess</p>
               <div className=" w-full h-40">
                 <input
@@ -134,7 +134,7 @@ const Play = () => {
             <div className="w-full pt-3">
               <button
                 disabled={game.endGame() === true}
-                className="border-2 flex mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
+                className="w-52 border-2 flex items-center justify-center mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
                 onClick={handleCheckButton}
               >
                 Check
@@ -142,7 +142,7 @@ const Play = () => {
             </div>
           </div>
           <div name="middle-column">
-            <div className="bg-cream ml-5 mr-5 w-80 h-96 pt-10">
+            <div className="box bg-cream rounded-lg ml-5 mr-5 w-80 h-96 pt-10">
               <div className="flex flex-col items-center">
                 <p className="font-bold text-purple-950 pb-6">
                   Current Player:
@@ -161,7 +161,7 @@ const Play = () => {
             <div className="pt-3">
               <button
                 disabled={game.endGame() === true}
-                className="border-2 flex mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
+                className="w-52 border-2 flex items-center justify-center mx-auto py-3 px-5 rounded-lg bg-cream hover:bg-blue"
                 onClick={handleSkipButton}
               >
                 Skip player
@@ -169,7 +169,7 @@ const Play = () => {
             </div>
           </div>
           <div name="right-column ">
-            <div className="bg-cream ml-5 w-80 h-96 pt-10">
+            <div className="box bg-cream rounded-lg ml-5 mr-5 w-80 h-96 pt-10">
               <div className="pt-10">
                 {game.currentPlayer.guessesLeft === 0 ? (
                   <p className="text-center flex mx-auto w-3/ pt-6">
@@ -200,7 +200,7 @@ const Play = () => {
             </div>
             <div className="pt-3">
               <button
-                className=" border-2 flex mx-auto py-3 px-5 rounded-lg  bg-coral hover:bg-blue"
+                className="w-52 border-2 flex items-center justify-center mx-auto py-3 rounded-lg  bg-coral hover:bg-blue"
                 onClick={handleRestartButton}
               >
                 Start Game Again
