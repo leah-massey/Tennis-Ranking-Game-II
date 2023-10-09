@@ -25,7 +25,7 @@ export default function Navbar() {
               <p className="pt-2">|</p>
               <li className="  px-5 pt-2">
                 <a
-                  href="/Login"
+                  href="/login"
                   className="text-cream no-underline tracking-wide"
                 >
                   Login
