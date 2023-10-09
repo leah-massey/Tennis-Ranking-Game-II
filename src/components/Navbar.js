@@ -1,6 +1,7 @@
 import HowToPlayPopup from "./howToPlayPopup";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -14,9 +15,12 @@ export default function Navbar() {
           <div className="flex justify-center items-center text-center mx-auto">
             <ul className=" hidden justify-center md:flex p-0 m-0">
               <li className=" px-5 pt-2">
-                <a href="/" className="text-cream no-underline tracking-wide">
+                <Link
+                  to="/play"
+                  className="text-cream no-underline tracking-wide"
+                >
                   Play
-                </a>
+                </Link>
               </li>
               <p className="pt-2">|</p>
               <li className="tracking-wide px-5">
@@ -24,12 +28,12 @@ export default function Navbar() {
               </li>
               <p className="pt-2">|</p>
               <li className="  px-5 pt-2">
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="text-cream no-underline tracking-wide"
                 >
                   Login
-                </a>
+                </Link>
               </li>
             </ul>
 
