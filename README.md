@@ -6,6 +6,8 @@ The Tennis Ranking Game
 <img src="./src/assets/screenshot.png" alt="Screenshot of project" title="Tennis Ranking Game">
 </p>
 
+[Play the game here](https://the-tennis-ranking-game.netlify.app/) 
+<br /><br />
 This project is guessing game where a user must correctly guess the ranking of a randomly generated top 20 tennis player.<br />
 <br />
 I've made this as a rebuild for an earlier project, putting into practise new skills and technologies and features (including TDD, OOP, session persistence and styled with Tailwind).<br />
