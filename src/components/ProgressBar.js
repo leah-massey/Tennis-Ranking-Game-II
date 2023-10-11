@@ -6,12 +6,17 @@ import femalePlayerList from "./femalePlayerList";
 function ProgressBar() {
   const [isGuessed, setIsGuessed] = useState(false);
 
-  //check if ranking is guessed
+  console.log("progressbar ");
+  console.log(femalePlayerList); // returns full updated list of players as you play
+  console.log("single");
+  console.log(femalePlayerList[0].guessed); // this returns a true ior false value
+
+  // (femalePlayerList[].guessed) ? setIsGuessed(true)
 
   return (
     <>
       <div className="grid grid-cols-4 md:grid-cols-10 lg:grid-cols-20">
-        {isGuessed ? (
+        {femalePlayerList[0].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -21,7 +26,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[1].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -31,7 +36,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[2].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -41,7 +46,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[3].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -51,7 +56,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[4].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -61,7 +66,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[5].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -71,7 +76,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[6].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -81,7 +86,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[7].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -91,7 +96,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[8].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -101,7 +106,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[9].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -111,7 +116,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[10].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -121,7 +126,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[11].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -131,7 +136,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[12].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -141,7 +146,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[13].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -151,7 +156,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[14].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -161,7 +166,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[15].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -171,7 +176,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[16].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -181,7 +186,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[17].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -191,7 +196,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[18].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>
@@ -201,7 +206,7 @@ function ProgressBar() {
           </div>
         )}
 
-        {isGuessed ? (
+        {femalePlayerList[19].guessed ? (
           <div className=" bg-forest  m-2 flex items-center justify-center">
             <FaCheck className="fill-cream" />
           </div>

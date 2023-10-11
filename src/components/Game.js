@@ -1,6 +1,6 @@
 const femalePlayerList = require("./femalePlayerList");
 
-export default class Game {
+class Game {
   static deserialize(data) {
     const game = new Game();
     game.guessedPlayers = data.guessedPlayers;
@@ -10,7 +10,9 @@ export default class Game {
   }
 
   constructor() {
-    // at the start of a game, remove all guessesLeft properties from the female player objects
+    // at the start of a game, create a duplicate of the femalePlayer list, with all guessesLeft properties from the female player objects
+    console.log("thsiis femaleplayerlist");
+    console.log(femalePlayerList);
     this.players = femalePlayerList.map((player) => {
       const guessesLeftProperty = "guessesLeft";
       if (player.hasOwnProperty(guessesLeftProperty)) {
@@ -40,6 +42,14 @@ export default class Game {
     let randomNumber = generateRandomNumber();
 
     // keep generating a number until the number is not that of an already guessed player
+    // a refactor would be to use property 'guessed' on players and to loop through, only settling on a player in guessed = false (this guessed property is updating correctly when game is played)
+
+    // while (this.players[randomNumber].guessed === true) {
+    //   randomNumber = generateRandomNumber();
+    // }
+
+    console.log(this.players[randomNumber]);
+
     while (this.guessedPlayers.includes(randomNumber + 1)) {
       randomNumber = generateRandomNumber();
     }
@@ -52,11 +62,14 @@ export default class Game {
       this.guessedPlayers.length === 19
     ) {
       this.guessedPlayers.push(number);
+      this.currentPlayer.guessed = true;
       this.score += this.currentPlayer.guessesLeft;
+
       return "you have finished the game!";
     }
     if (number === this.currentPlayer.ranking) {
       this.score += this.currentPlayer.guessesLeft;
+      this.currentPlayer.guessed = true;
       this.guessedPlayers.push(number);
       this.currentPlayer = this.generateNewPlayer();
       return "correct";
@@ -91,3 +104,5 @@ export default class Game {
     }
   }
 }
+
+module.exports = Game;

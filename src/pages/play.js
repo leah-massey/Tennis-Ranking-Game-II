@@ -234,9 +234,9 @@ const Play = () => {
             <p>not bad but still quite a bit of room for improvement</p>
           ) : game.score >= 180 && game.score < 200 ? (
             <p>Great Score! You know your stuff!</p>
-          ) : (
-            game.score === 200(<p>You absolutely nailed it!!!</p>)
-          )}
+          ) : game.score === 200 ? (
+            <p>You absolutely nailed it!!!</p>
+          ) : null}
         </Modal.Body>
         <Modal.Footer className="bg-cream">
           <Button
