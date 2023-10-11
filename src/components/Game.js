@@ -10,10 +10,11 @@ export default class Game {
   }
 
   constructor() {
+    // at the start of a game, remove all guessesLeft properties from the female player objects
     this.players = femalePlayerList.map((player) => {
-      const propertyToDelete = "guessesLeft";
-      if (player.hasOwnProperty(propertyToDelete)) {
-        delete player[propertyToDelete];
+      const guessesLeftProperty = "guessesLeft";
+      if (player.hasOwnProperty(guessesLeftProperty)) {
+        delete player[guessesLeftProperty];
       }
       return player;
     });
@@ -23,10 +24,7 @@ export default class Game {
   }
 
   generateNewPlayer() {
-    // .generate a new currentPlayer
-
     const player = this.randomPlayer();
-
     if (player.guessesLeft == null) {
       player.guessesLeft = 10;
     }
@@ -41,6 +39,7 @@ export default class Game {
 
     let randomNumber = generateRandomNumber();
 
+    // keep generating a number until the number is not that of an already guessed player
     while (this.guessedPlayers.includes(randomNumber + 1)) {
       randomNumber = generateRandomNumber();
     }
@@ -83,13 +82,11 @@ export default class Game {
   skip() {
     const player = this.currentPlayer;
     let newPlayer;
-    // I only want skip loop to work if there is more than one player left to guess
+    // skip method will only work if there is more than one player left to guess
     if (this.guessedPlayers.length < 19) {
-      //
       do {
         newPlayer = this.generateNewPlayer();
       } while (newPlayer === player);
-
       this.currentPlayer = newPlayer;
     }
   }
