@@ -36,3 +36,7 @@ code {
 .font-faster {
   font-family: "faster one", cursive;
 }
+
+/* .tile {
+  @apply flex justify-center items-center min-w-fit;
+} */
