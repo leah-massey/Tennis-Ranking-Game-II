@@ -2,8 +2,8 @@ import React from "react";
 
 function ProgressBar() {
   return (
-    <div>
-      <div className=" grid grid-cols-3  ">
+    <>
+      <div className="grid grid-cols-5 md:grid-cols-10 lg:grid-cols-20">
         <div className=" bg-cream  m-2 flex items-center justify-center">
           <p>1</p>
         </div>
@@ -65,7 +65,7 @@ function ProgressBar() {
           <p>20</p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
