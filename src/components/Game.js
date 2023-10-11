@@ -11,8 +11,6 @@ class Game {
 
   constructor() {
     // at the start of a game, create a duplicate of the femalePlayer list, with all guessesLeft properties from the female player objects
-    console.log("thsiis femaleplayerlist");
-    console.log(femalePlayerList);
     this.players = femalePlayerList.map((player) => {
       const guessesLeftProperty = "guessesLeft";
       if (player.hasOwnProperty(guessesLeftProperty)) {

@@ -1,17 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
 import femalePlayerList from "./femalePlayerList";
 
 function ProgressBar() {
-  const [isGuessed, setIsGuessed] = useState(false);
-
   console.log("progressbar ");
   console.log(femalePlayerList); // returns full updated list of players as you play
-  console.log("single");
-  console.log(femalePlayerList[0].guessed); // this returns a true ior false value
-
-  // (femalePlayerList[].guessed) ? setIsGuessed(true)
 
   return (
     <>

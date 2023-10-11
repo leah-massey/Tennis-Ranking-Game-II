@@ -18,6 +18,7 @@ const Play = () => {
   const [score, setScore] = useState(0);
   const [guessesLeft, setGuessesLeft] = useState(10);
   const [showGameOver, setShowGameOver] = useState(false);
+  // const [resetProgressBar, setResetProgressBar] = useState(false);
 
   //retrieve locally stored game
   useEffect(() => {
@@ -40,6 +41,10 @@ const Play = () => {
     setScore(0);
     setGuessedPlayers([]);
   };
+
+  // const handleResetProgressBar = () => {
+  //   setResetProgressBar(true);
+  // };
 
   useEffect(() => {
     setGuessesLeft(game.currentPlayer.guessesLeft);
@@ -202,6 +207,10 @@ const Play = () => {
             <div className="pt-3">
               <button
                 className="w-52 border-2 flex items-center justify-center mx-auto py-3 rounded-lg  bg-coral hover:bg-blue"
+                // onClick={() => {
+                //   handleRestartButton();
+                //   handleResetProgressBar();
+                // }}
                 onClick={handleRestartButton}
               >
                 Start Game Again
