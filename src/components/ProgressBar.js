@@ -1,12 +1,25 @@
 import React from "react";
+import Play from "../pages/play";
+import { useState } from "react";
+import { FaCheck } from "react-icons/fa";
 
 function ProgressBar() {
+  const [changeColour, setChangeColour] = useState(true);
+
+  //check if ranking is guessed
+
   return (
     <>
-      <div className="grid grid-cols-5 md:grid-cols-10 lg:grid-cols-20">
-        <div className=" bg-cream  m-2 flex items-center justify-center">
-          <p>1</p>
-        </div>
+      <div className="grid grid-cols-4 md:grid-cols-10 lg:grid-cols-20">
+        {changeColour ? (
+          <div className=" bg-forest  m-2 flex items-center justify-center">
+            <FaCheck className="fill-cream" />
+          </div>
+        ) : (
+          <div className=" bg-cream  m-2 flex items-center justify-center">
+            <p>1</p>
+          </div>
+        )}
         <div className=" bg-cream m-2 flex items-center justify-center">
           <p>2</p>
         </div>

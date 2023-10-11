@@ -6,7 +6,7 @@ module.exports = {
       // Simple 16 column grid
       20: "repeat(20, minmax(0, 1fr))",
       10: "repeat(10, minmax(0, 1fr))",
-      5: "repeat(5, minmax(0, 1fr))",
+      4: "repeat(4, minmax(0, 1fr))",
     },
     extend: {
       fontfamily: {

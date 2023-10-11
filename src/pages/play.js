@@ -116,7 +116,6 @@ const Play = () => {
   return (
     <>
       <div className="items-center h-full font-mono">
-        <ProgressBar />
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 ">
           <div name="left column">
             <div className="box bg-cream rounded-lg mr-5 ml-5 w-80 h-96 pt-10">
@@ -209,6 +208,7 @@ const Play = () => {
             </div>
           </div>
         </div>
+        <ProgressBar />
         <div className="pt-20 pb-10 md:flex md:justify-center grid grid-cols-3 "></div>
       </div>
 
