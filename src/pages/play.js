@@ -7,10 +7,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import ProgressBar from "../components/ProgressBar";
 
 const Play = () => {
-  // const [game, setGame] = useState(new Game());
   const [game, setGame] = useState(() => {
     const jsonGame = JSON.parse(localStorage.getItem("game"));
-    return jsonGame ? Game.deserialize(jsonGame) : new Game();
+    return jsonGame ? Game.deserialize(jsonGame) : new Game(); // if game in localStorage, retrieve it, else set new Game
   });
   const [player, setPlayer] = useState(game.currentPlayer);
   const [guessedPlayers, setGuessedPlayers] = useState([]);
@@ -20,6 +19,7 @@ const Play = () => {
   const [guessesLeft, setGuessesLeft] = useState(10);
   const [showGameOver, setShowGameOver] = useState(false);
 
+  //retrieve locally stored game
   useEffect(() => {
     const jsonGame = JSON.parse(localStorage.getItem("game")) || new Game();
     const savedGame = Object.assign(new Game(), jsonGame);
@@ -27,6 +27,7 @@ const Play = () => {
     setScore(savedGame.score);
   }, []);
 
+  // send game to local storage
   useEffect(() => {
     localStorage.setItem("game", JSON.stringify(game));
   });
@@ -48,9 +49,9 @@ const Play = () => {
     setPlayer(game.currentPlayer);
   }, [game.currentPlayer]);
 
+  //message delivered after each guess attempt
   function guessMessage(guess, numberToGuess) {
     const playerGuess = Number(guess);
-
     if (playerGuess < numberToGuess) {
       setMessage("They're not that good!");
     } else if (playerGuess > numberToGuess) {
